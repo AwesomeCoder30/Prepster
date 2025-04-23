@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Landing Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50 text-gray-900">
+    <header class="bg-white shadow p-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <h1 class="text-2xl font-bold">MyProject</h1>
+                <form class="hidden md:block">
+                    <input type="email" placeholder="Email" class="px-2 py-1 border rounded" />
+                    <input type="password" placeholder="Password" class="px-2 py-1 border rounded" />
+                    <button type="submit" class="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700">Login</button>
+                </form>
+            </div>
+            <nav class="space-x-4">
+                <a href="#features" class="hover:text-blue-600">Features</a>
+                <a href="#about" class="hover:text-blue-600">About</a>
+                <a href="#testimonials" class="hover:text-blue-600">Testimonials</a>
+                <a href="#get-started" class="hover:text-blue-600">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="text-center py-20 bg-green-50 fade-in">
+        <h2 class="text-4xl font-bold mb-4">Powerful Tool for Modern Teams</h2>
+        <p class="text-lg max-w-2xl mx-auto mb-6">MyProject is a flexible, intelligent solution for solving lorem ipsum dolor sit amet. Fast, easy to integrate, and built with the latest tech stack.</p>
+        <a href="#get-started" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700">Get Started</a>
+    </section>
+
+    <section id="features" class="py-16 bg-white fade-in">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div>
+                <h3 class="text-xl font-semibold mb-2">Fast Integration</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold mb-2">Scalable Design</h3>
+                <p>Curabitur blandit tempus porttitor. Nullam id dolor id nibh ultricies vehicula.</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold mb-2">Developer Friendly</h3>
+                <p>Maecenas faucibus mollis interdum. Praesent commodo cursus magna.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-16 bg-gray-50 fade-in">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-4">About Us</h2>
+            <p class="mb-4 max-w-3xl mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+            <p class="max-w-3xl mx-auto">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue.</p>
+        </div>
+    </section>
+
+    <section id="testimonials" class="py-16 bg-white fade-in">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">Testimonials</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <div class="bg-gray-100 p-6 rounded shadow transform transition duration-500 hover:scale-105 hover:shadow-lg">
+                    <p class="italic transition-opacity duration-700">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."</p>
+                    <p class="mt-4 font-semibold">— John Doe, Developer</p>
+                </div>
+                <div class="bg-gray-100 p-6 rounded shadow transform transition duration-500 hover:scale-105 hover:shadow-lg">
+                    <p class="italic transition-opacity duration-700">"Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum."</p>
+                    <p class="mt-4 font-semibold">— Jane Smith, Product Manager</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="get-started" class="py-20 bg-blue-600 text-white text-center fade-in">
+        <h2 class="text-3xl font-bold mb-4">Start Using MyProject</h2>
+        <p class="mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>
+        <a href="https://github.com/yourusername/myproject" class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100">View on GitHub</a>
+    </section>
+
+    <footer class="py-6 text-center bg-white border-t">
+        <p class="text-sm text-gray-500">&copy; 2025 MyProject. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
