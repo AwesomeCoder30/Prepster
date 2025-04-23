@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
     const fadeInElements = document.querySelectorAll(".fade-in");
-
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -8,23 +7,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 observer.unobserve(entry.target);
             }
         });
-    }, {
-        threshold: 0.1
-    });
-
+    }, { threshold: 0.1 });
     fadeInElements.forEach(el => observer.observe(el));
-});
 
-document.addEventListener("DOMContentLoaded", () => {
     const loginToggle = document.getElementById("login-toggle");
     const loginForm = document.getElementById("login-form");
     const loginClose = document.getElementById("login-close");
-
     const toggleBtn = document.getElementById("toggle-form");
     const togglePrompt = document.getElementById("toggle-prompt");
     const formTitle = document.getElementById("form-title");
-    const loginFields = document.getElementById("login-fields");
-    const signupFields = document.getElementById("signup-fields");
+    const formSlider = document.getElementById("form-slider");
 
     let isVisible = false;
     let isSignup = false;
@@ -49,33 +41,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     toggleBtn.addEventListener("click", () => {
         isSignup = !isSignup;
-
         formTitle.textContent = isSignup ? "Sign Up" : "Sign In";
         toggleBtn.textContent = isSignup ? "Login" : "Sign Up";
         togglePrompt.textContent = isSignup ?
             "Already have an account?" :
             "Don't have an account?";
-
-        if (isSignup) {
-            loginFields.classList.add("translate-x-20", "opacity-0");
-            loginFields.classList.remove("opacity-100", "translate-x-0");
-
-            setTimeout(() => {
-                loginFields.classList.add("hidden");
-                signupFields.classList.remove("hidden");
-                signupFields.classList.remove("translate-x-20", "opacity-0");
-                signupFields.classList.add("translate-x-0", "opacity-100");
-            }, 300);
-        } else {
-            signupFields.classList.add("translate-x-20", "opacity-0");
-            signupFields.classList.remove("translate-x-0", "opacity-100");
-
-            setTimeout(() => {
-                signupFields.classList.add("hidden");
-                loginFields.classList.remove("hidden");
-                loginFields.classList.remove("translate-x-20", "opacity-0");
-                loginFields.classList.add("translate-x-0", "opacity-100");
-            }, 300);
-        }
+        formSlider.style.transform = isSignup ? "translateX(-100%)" : "translateX(0)";
     });
 });

@@ -2,30 +2,6 @@ html {
     scroll-behavior: smooth;
 }
 
-.bg-blue-600 {
-    background-color: #2f855a !important;
-}
-
-.bg-blue-700 {
-    background-color: #276749 !important;
-}
-
-.bg-blue-50 {
-    background-color: #f0fdf4 !important;
-}
-
-.text-blue-600 {
-    color: #2f855a !important;
-}
-
-.hover\:bg-blue-700:hover {
-    background-color: #276749 !important;
-}
-
-.hover\:text-blue-600:hover {
-    color: #2f855a !important;
-}
-
 .fade-in {
     opacity: 0;
     transform: translateY(20px);
@@ -35,4 +11,8 @@ html {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+.perspective-1000 {
+    perspective: 1000px;
 }

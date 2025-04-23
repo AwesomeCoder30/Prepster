@@ -16,32 +16,36 @@
                 <h1 class="text-2xl font-bold">MyProject</h1>
                 <div class="relative" id="login-wrapper">
                     <button id="login-toggle" class="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700">Login</button>
-                    <div id="login-form" class="absolute top-0 left-full ml-2 w-64 transform translate-x-10 opacity-0 transition-all duration-300 ease-in-out flex-col bg-white border p-4 rounded shadow-md z-50 hidden">
-                        <div class="flex justify-between items-center mb-2">
-                            <span id="form-title" class="font-semibold">Sign In</span>
-                            <button id="login-close" class="text-gray-500 hover:text-red-600 font-bold">&times;</button>
+                    <div id="login-form" class="absolute top-16 right-4 w-96 h-[32rem] transform opacity-0 transition-all duration-300 ease-in-out bg-white shadow-xl border rounded-lg z-50 hidden p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-6">
+                                <span id="form-title" class="text-xl font-bold">Sign In</span>
+                                <button id="login-close" class="text-gray-500 hover:text-red-600 text-xl font-bold">&times;</button>
+                            </div>
+                            <div class="overflow-hidden w-full">
+                                <div id="form-slider" class="flex w-[200%] transition-transform duration-300 ease-in-out">
+                                    <div class="w-full flex-shrink-0 space-y-4">
+                                        <input type="email" placeholder="Email" class="w-full py-2 px-4 border border-gray-300 rounded-md text-sm" />
+                                        <input type="password" placeholder="Password" class="w-full py-2 px-4 border border-gray-300 rounded-md text-sm" />
+                                        <button type="submit" class="w-full py-2 bg-green-600 text-white rounded-md hover:bg-green-700 text-sm font-medium">Login</button>
+                                    </div>
+                                    <div class="w-full flex-shrink-0 space-y-4">
+                                        <input type="text" placeholder="Full Name" class="w-full py-2 px-4 border border-gray-300 rounded-md text-sm" />
+                                        <input type="email" placeholder="Email" class="w-full py-2 px-4 border border-gray-300 rounded-md text-sm" />
+                                        <input type="password" placeholder="Password" class="w-full py-2 px-4 border border-gray-300 rounded-md text-sm" />
+                                        <button type="submit" class="w-full py-2 bg-green-600 text-white rounded-md hover:bg-green-700 text-sm font-medium">Sign Up</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-                        <div id="login-fields" class="transition-all duration-300 ease-in-out">
-                            <input type="email" placeholder="Email" class="px-2 py-1 mb-2 border rounded w-full" />
-                            <input type="password" placeholder="Password" class="px-2 py-1 mb-2 border rounded w-full" />
-                            <button type="submit" class="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700 w-full">Login</button>
-                        </div>
-
-                        <div id="signup-fields" class="transition-all duration-300 ease-in-out transform translate-x-20 opacity-0 absolute top-14 left-0 w-full hidden">
-                            <input type="text" placeholder="Full Name" class="px-2 py-1 mb-2 border rounded w-full" />
-                            <input type="email" placeholder="Email" class="px-2 py-1 mb-2 border rounded w-full" />
-                            <input type="password" placeholder="Password" class="px-2 py-1 mb-2 border rounded w-full" />
-                            <button type="submit" class="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700 w-full">Sign Up</button>
-                        </div>
-
-                        <div class="text-sm text-center mt-4">
+                        <div class="text-sm text-center">
                             <span id="toggle-prompt">Don't have an account?</span>
-                            <button id="toggle-form" class="text-green-700 hover:underline font-medium ml-1">Sign Up</button>
+                            <button id="toggle-form" class="text-green-700 hover:underline font-semibold ml-1">Sign Up</button>
                         </div>
                     </div>
                 </div>
             </div>
+
             <nav class="space-x-4">
                 <a href="#features" class="hover:text-blue-600">Features</a>
                 <a href="#about" class="hover:text-blue-600">About</a>
@@ -54,7 +58,7 @@
     <section class="text-center py-20 bg-green-50 fade-in">
         <h2 class="text-4xl font-bold mb-4">Powerful Tool for Modern Teams</h2>
         <p class="text-lg max-w-2xl mx-auto mb-6">MyProject is a flexible, intelligent solution for solving lorem ipsum dolor sit amet. Fast, easy to integrate, and built with the latest tech stack.</p>
-        <a href="#get-started" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700">Get Started</a>
+        <a href="#get-started" class="bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700">Get Started</a>
     </section>
 
     <section id="features" class="py-16 bg-white fade-in">
@@ -98,7 +102,7 @@
         </div>
     </section>
 
-    <section id="get-started" class="py-20 bg-blue-600 text-white text-center fade-in">
+    <section id="get-started" class="py-20 bg-green-600 text-white text-center fade-in">
         <h2 class="text-3xl font-bold mb-4">Start Using MyProject</h2>
         <p class="mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>
         <a href="https://github.com/yourusername/myproject" class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100">View on GitHub</a>
