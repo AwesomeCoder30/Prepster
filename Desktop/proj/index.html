@@ -12,13 +12,35 @@
 <body class="bg-gray-50 text-gray-900">
     <header class="bg-white shadow p-4 sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-4 relative">
                 <h1 class="text-2xl font-bold">MyProject</h1>
-                <form class="hidden md:block">
-                    <input type="email" placeholder="Email" class="px-2 py-1 border rounded" />
-                    <input type="password" placeholder="Password" class="px-2 py-1 border rounded" />
-                    <button type="submit" class="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700">Login</button>
-                </form>
+                <div class="relative" id="login-wrapper">
+                    <button id="login-toggle" class="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700">Login</button>
+                    <div id="login-form" class="absolute top-0 left-full ml-2 w-64 transform translate-x-10 opacity-0 transition-all duration-300 ease-in-out flex-col bg-white border p-4 rounded shadow-md z-50 hidden">
+                        <div class="flex justify-between items-center mb-2">
+                            <span id="form-title" class="font-semibold">Sign In</span>
+                            <button id="login-close" class="text-gray-500 hover:text-red-600 font-bold">&times;</button>
+                        </div>
+
+                        <div id="login-fields" class="transition-all duration-300 ease-in-out">
+                            <input type="email" placeholder="Email" class="px-2 py-1 mb-2 border rounded w-full" />
+                            <input type="password" placeholder="Password" class="px-2 py-1 mb-2 border rounded w-full" />
+                            <button type="submit" class="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700 w-full">Login</button>
+                        </div>
+
+                        <div id="signup-fields" class="transition-all duration-300 ease-in-out transform translate-x-20 opacity-0 absolute top-14 left-0 w-full hidden">
+                            <input type="text" placeholder="Full Name" class="px-2 py-1 mb-2 border rounded w-full" />
+                            <input type="email" placeholder="Email" class="px-2 py-1 mb-2 border rounded w-full" />
+                            <input type="password" placeholder="Password" class="px-2 py-1 mb-2 border rounded w-full" />
+                            <button type="submit" class="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700 w-full">Sign Up</button>
+                        </div>
+
+                        <div class="text-sm text-center mt-4">
+                            <span id="toggle-prompt">Don't have an account?</span>
+                            <button id="toggle-form" class="text-green-700 hover:underline font-medium ml-1">Sign Up</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <nav class="space-x-4">
                 <a href="#features" class="hover:text-blue-600">Features</a>

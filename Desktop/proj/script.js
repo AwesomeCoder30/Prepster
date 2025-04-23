@@ -14,3 +14,68 @@ document.addEventListener("DOMContentLoaded", () => {
 
     fadeInElements.forEach(el => observer.observe(el));
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const loginToggle = document.getElementById("login-toggle");
+    const loginForm = document.getElementById("login-form");
+    const loginClose = document.getElementById("login-close");
+
+    const toggleBtn = document.getElementById("toggle-form");
+    const togglePrompt = document.getElementById("toggle-prompt");
+    const formTitle = document.getElementById("form-title");
+    const loginFields = document.getElementById("login-fields");
+    const signupFields = document.getElementById("signup-fields");
+
+    let isVisible = false;
+    let isSignup = false;
+
+    loginToggle.addEventListener("click", () => {
+        isVisible = !isVisible;
+        loginForm.classList.toggle("hidden", !isVisible);
+        loginForm.classList.toggle("opacity-0", !isVisible);
+        loginForm.classList.toggle("translate-x-10", !isVisible);
+        loginForm.classList.toggle("opacity-100", isVisible);
+        loginForm.classList.toggle("translate-x-0", isVisible);
+    });
+
+    loginClose.addEventListener("click", () => {
+        isVisible = false;
+        loginForm.classList.add("hidden");
+        loginForm.classList.add("opacity-0");
+        loginForm.classList.add("translate-x-10");
+        loginForm.classList.remove("opacity-100");
+        loginForm.classList.remove("translate-x-0");
+    });
+
+    toggleBtn.addEventListener("click", () => {
+        isSignup = !isSignup;
+
+        formTitle.textContent = isSignup ? "Sign Up" : "Sign In";
+        toggleBtn.textContent = isSignup ? "Login" : "Sign Up";
+        togglePrompt.textContent = isSignup ?
+            "Already have an account?" :
+            "Don't have an account?";
+
+        if (isSignup) {
+            loginFields.classList.add("translate-x-20", "opacity-0");
+            loginFields.classList.remove("opacity-100", "translate-x-0");
+
+            setTimeout(() => {
+                loginFields.classList.add("hidden");
+                signupFields.classList.remove("hidden");
+                signupFields.classList.remove("translate-x-20", "opacity-0");
+                signupFields.classList.add("translate-x-0", "opacity-100");
+            }, 300);
+        } else {
+            signupFields.classList.add("translate-x-20", "opacity-0");
+            signupFields.classList.remove("translate-x-0", "opacity-100");
+
+            setTimeout(() => {
+                signupFields.classList.add("hidden");
+                loginFields.classList.remove("hidden");
+                loginFields.classList.remove("translate-x-20", "opacity-0");
+                loginFields.classList.add("translate-x-0", "opacity-100");
+            }, 300);
+        }
+    });
+});
