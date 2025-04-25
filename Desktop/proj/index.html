@@ -7,9 +7,11 @@
     <title>Project Landing Page</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
 </head>
 
-<body class="bg-gray-50 text-gray-900">
+<body class="relative bg-transparent text-gray-900">
     <header class="bg-white shadow p-4 sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-4 relative">
@@ -55,25 +57,30 @@
         </div>
     </header>
 
-    <section class="text-center py-20 bg-green-50 fade-in">
-        <h2 class="text-4xl font-bold mb-4">Powerful Tool for Modern Teams</h2>
-        <p class="text-lg max-w-2xl mx-auto mb-6">MyProject is a flexible, intelligent solution for solving lorem ipsum dolor sit amet. Fast, easy to integrate, and built with the latest tech stack.</p>
-        <a href="#get-started" class="bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700">Get Started</a>
+    <section id="hero" class="relative w-full min-h-[30rem] overflow-hidden flex items-center justify-center text-center text-gray-900 bg-green-50 py-16">
+        <canvas id="medicalCanvas" class="absolute inset-0 w-full h-full z-0"></canvas>
+        <div class="relative z-10 px-4">
+            <h2 class="text-4xl font-bold mb-1 animate-pulse">Lorem Ipsum Dolor Sit Amet</h2>
+            <p class="text-lg max-w-xl mb-1 mx-auto">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <a href="#get-started" class="bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700 inline-block">Get Started</a>
+        </div>
     </section>
 
     <section id="features" class="py-16 bg-white fade-in">
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div>
-                <h3 class="text-xl font-semibold mb-2">Fast Integration</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h3 class="text-xl font-semibold mb-2">Lorem Ipsum</h3>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
             </div>
             <div>
-                <h3 class="text-xl font-semibold mb-2">Scalable Design</h3>
-                <p>Curabitur blandit tempus porttitor. Nullam id dolor id nibh ultricies vehicula.</p>
+                <h3 class="text-xl font-semibold mb-2">Consectetur</h3>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
             </div>
             <div>
-                <h3 class="text-xl font-semibold mb-2">Developer Friendly</h3>
-                <p>Maecenas faucibus mollis interdum. Praesent commodo cursus magna.</p>
+                <h3 class="text-xl font-semibold mb-2">Adipiscing Elit</h3>
+                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
             </div>
         </div>
     </section>
@@ -81,8 +88,7 @@
     <section id="about" class="py-16 bg-gray-50 fade-in">
         <div class="container mx-auto text-center">
             <h2 class="text-3xl font-bold mb-4">About Us</h2>
-            <p class="mb-4 max-w-3xl mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-            <p class="max-w-3xl mx-auto">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue.</p>
+            <p class="mb-4 max-w-3xl mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere arcu in neque tincidunt, nec fermentum justo gravida.</p>
         </div>
     </section>
 
@@ -91,21 +97,21 @@
             <h2 class="text-3xl font-bold mb-6">Testimonials</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
                 <div class="bg-gray-100 p-6 rounded shadow transform transition duration-500 hover:scale-105 hover:shadow-lg">
-                    <p class="italic transition-opacity duration-700">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."</p>
-                    <p class="mt-4 font-semibold">— John Doe, Developer</p>
+                    <p class="italic">"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</p>
+                    <p class="mt-4 font-semibold">— John Doe</p>
                 </div>
                 <div class="bg-gray-100 p-6 rounded shadow transform transition duration-500 hover:scale-105 hover:shadow-lg">
-                    <p class="italic transition-opacity duration-700">"Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum."</p>
-                    <p class="mt-4 font-semibold">— Jane Smith, Product Manager</p>
+                    <p class="italic">"Ut enim ad minim veniam, quis nostrud exercitation."</p>
+                    <p class="mt-4 font-semibold">— Jane Smith</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="get-started" class="py-20 bg-green-600 text-white text-center fade-in">
-        <h2 class="text-3xl font-bold mb-4">Start Using MyProject</h2>
+        <h2 class="text-3xl font-bold mb-4">Get Started</h2>
         <p class="mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>
-        <a href="https://github.com/yourusername/myproject" class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100">View on GitHub</a>
+        <a href="https://github.com/yourusername/myproject" class="bg-white text-green-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100">View on GitHub</a>
     </section>
 
     <footer class="py-6 text-center bg-white border-t">

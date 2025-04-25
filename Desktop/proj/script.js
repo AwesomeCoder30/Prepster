@@ -49,3 +49,68 @@ document.addEventListener("DOMContentLoaded", () => {
         formSlider.style.transform = isSignup ? "translateX(-100%)" : "translateX(0)";
     });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const canvas = document.getElementById("medicalCanvas");
+    const ctx = canvas.getContext("2d");
+    const hero = document.getElementById("hero");
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = hero.offsetHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    let t = 0;
+    let mouseX = 0;
+    let mouseY = 0;
+
+    const particles = Array.from({ length: 160 }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        baseR: Math.random() * 2 + 1,
+        r: 0,
+        dx: (Math.random() - 0.5) * 0.5,
+        dy: (Math.random() - 0.5) * 0.5,
+    }));
+
+    function drawCells() {
+        particles.forEach((p, index) => {
+            const dx = mouseX - p.x;
+            const dy = mouseY - p.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 100) {
+                p.x -= dx * 0.02;
+                p.y -= dy * 0.02;
+            }
+            p.x += p.dx;
+            p.y += p.dy;
+            if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+
+            // Pulse animation
+            const pulse = Math.sin(t * 2 + index) * 0.5 + 1;
+            p.r = p.baseR * pulse;
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = "rgba(5, 106, 36, 0.3)";
+            ctx.fill();
+        });
+    }
+
+    canvas.addEventListener("mousemove", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+    });
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawCells();
+        t += 0.03;
+        requestAnimationFrame(animate);
+    }
+    animate();
+});
