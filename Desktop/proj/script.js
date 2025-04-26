@@ -115,24 +115,23 @@ document.addEventListener("DOMContentLoaded", () => {
     animate();
 });
 
-// document.addEventListener("DOMContentLoaded", () => {
-//     const toggle = document.getElementById("darkToggle");
-//     const savedTheme = localStorage.getItem("theme");
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("free-trial-modal");
+    const modalContent = document.getElementById("modal-content");
+    const closeModal = document.getElementById("close-modal");
 
-//     if (savedTheme === "dark") {
-//         document.documentElement.classList.add("dark");
-//         toggle.checked = true;
-//     } else {
-//         toggle.checked = false;
-//     }
+    setTimeout(() => {
+        modal.classList.remove("hidden");
+        setTimeout(() => {
+            modalContent.classList.remove("scale-90", "opacity-0");
+            modalContent.classList.add("scale-100", "opacity-100");
+        }, 100);
+    }, 3000);
 
-//     toggle.addEventListener("change", () => {
-//         if (toggle.checked) {
-//             document.documentElement.classList.add("dark");
-//             localStorage.setItem("theme", "dark");
-//         } else {
-//             document.documentElement.classList.remove("dark");
-//             localStorage.setItem("theme", "light");
-//         }
-//     });
-// });
+    closeModal.addEventListener("click", () => {
+        modalContent.classList.add("scale-90", "opacity-0");
+        setTimeout(() => {
+            modal.classList.add("hidden");
+        }, 300);
+    });
+});
