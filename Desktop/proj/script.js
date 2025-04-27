@@ -135,3 +135,23 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 300);
     });
 });
+
+document.addEventListener("scroll", () => {
+    const cards = document.querySelectorAll(".testimonial-card");
+    cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const offset = (rect.top - window.innerHeight / 2) * 0.05;
+        card.style.setProperty('--scroll-amount', `${offset}px`);
+    });
+});
+
+const scrollList = document.querySelector(".scroll-list");
+const items = Array.from(scrollList.children);
+
+window.addEventListener("load", () => {
+    items.forEach((item) => {
+        const clone = item.cloneNode(true);
+        clone.setAttribute("aria-hidden", "true");
+        scrollList.appendChild(clone);
+    });
+});
