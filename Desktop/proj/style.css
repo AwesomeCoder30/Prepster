@@ -86,3 +86,112 @@ html {
         box-shadow: 0 0 8px #34d399, 0 0 12px #6ee7b7;
     }
 }
+
+@media (max-width: 768px) {
+    #testimonial-slider>div {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    #testimonial-slider>div>div {
+        width: 100%;
+    }
+}
+
+#testimonials {
+    background: white;
+    padding: 3rem 0 2rem 0;
+    text-align: center;
+}
+
+#testimonials h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #1f2937;
+}
+
+.slider {
+    background: white;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding: 1rem 0;
+}
+
+.slider::before,
+.slider::after {
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 150px;
+    z-index: 2;
+}
+
+.slider::before {
+    left: 0;
+    top: 0;
+}
+
+.slider::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+}
+
+.slide-track {
+    animation: scroll 15s linear infinite;
+    display: flex;
+    width: calc(500px * 12);
+}
+
+.slide {
+    width: 500px;
+    height: 220px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.testimonial-card {
+    background: #f3f4f6;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 90%;
+    height: 100%;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.testimonial-card:hover {
+    transform: scale(1.13);
+    box-shadow: 0 8px 16px rgba(52, 211, 153, 0.4);
+    border: 2px solid #52937b;
+    /* Soft green glow border */
+}
+
+.testimonial-text {
+    font-style: italic;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: #374151;
+}
+
+.testimonial-name {
+    font-weight: bold;
+    color: #1f2937;
+    font-size: 1.1rem;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-500px * 6));
+    }
+}
