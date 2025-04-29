@@ -144,13 +144,13 @@ html {
 }
 
 .slide-track {
-    animation: scroll 15s linear infinite;
+    animation: scroll 40s linear infinite;
     display: flex;
     width: calc(500px * 12);
 }
 
 .slide {
-    width: 500px;
+    width: 600px;
     height: 220px;
     flex-shrink: 0;
     display: flex;
