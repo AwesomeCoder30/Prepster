@@ -89,13 +89,13 @@
                     <h2 class="text-3xl md:text-4xl font-extrabold mb-6 text-center">Join the Waitlist</h2>
                     <p class="text-gray-600 text-center mb-8 text-base md:text-lg">Be the first to know when Prepster launches.</p>
 
-                    <form action="https://formspree.io/f/mvgazqej" method="POST" class="space-y-6">
-                        <input type="text" name="full_name" placeholder="Full Name" class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-lg" />
-                        <input type="email" name="email" placeholder="Email Address" class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-lg" />
-                        <input type="text" name="year" placeholder="Current Year (e.g., Sophomore, Gap Year)" class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-lg" />
+                    <form id="waitlistForm" action="https://formspree.io/f/mvgazqej" method="POST" class="space-y-6">
+                        <input type="text" name="full_name" placeholder="Full Name" required class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-lg">
+                        <input type="email" name="email" placeholder="Email Address" required class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-lg">
+                        <input type="text" name="year" placeholder="Current Year (e.g., Sophomore, Gap Year)" class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-lg">
                         <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-lg font-bold text-lg">
-              Join Now
-            </button>
+                          Join Now
+                        </button>
                     </form>
 
                     <p class="text-sm text-gray-400 text-center mt-6">No spam — only exciting updates.</p>
@@ -168,6 +168,27 @@
                 requestAnimationFrame(animate);
             }
             animate();
+        });
+
+        document.getElementById("waitlistForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const form = e.target;
+
+            fetch(form.action, {
+                method: form.method,
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    window.location.href = "index.html";
+                } else {
+                    alert("Oops! Something went wrong. Please try again.");
+                }
+            }).catch(error => {
+                alert("Network error. Please try again.");
+            });
         });
     </script>
 </body>
