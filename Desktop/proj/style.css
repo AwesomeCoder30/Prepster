@@ -328,3 +328,49 @@ html {
     top: 50px;
     transform: rotate(180deg);
 }
+
+.slide-letter {
+    display: inline-block;
+    transform: translateX(50px);
+    opacity: 0;
+    animation: slideIn 1s forwards;
+}
+
+.slide-letter:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.slide-letter:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.slide-letter:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.slide-letter:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.slide-letter:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.slide-letter:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+.slide-letter:nth-child(7) {
+    animation-delay: 0.7s;
+}
+
+.slide-letter:nth-child(8) {
+    animation-delay: 0.8s;
+}
+
+@keyframes slideIn {
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
