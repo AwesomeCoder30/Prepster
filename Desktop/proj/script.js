@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
             modalContent.classList.remove("scale-90", "opacity-0");
             modalContent.classList.add("scale-100", "opacity-100");
         }, 100);
-    }, 3000);
+    }, 7000);
 
     closeModal.addEventListener("click", () => {
         modalContent.classList.add("scale-90", "opacity-0");
