@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Prepster Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50 font-sans text-gray-800">
+
+    <!-- Sidebar -->
+    <aside class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg">
+        <div class="p-6">
+            <h1 class="text-2xl font-bold text-green-700">Prepster</h1>
+        </div>
+        <nav class="mt-8">
+            <a href="#" class="flex items-center px-6 py-2 text-gray-700 hover:bg-green-50">
+                <span class="ml-3">Dashboard</span>
+            </a>
+            <a href="#" class="flex items-center px-6 py-2 text-gray-700 hover:bg-green-50">
+                <span class="ml-3">My Roadmaps</span>
+            </a>
+            <a href="#" class="flex items-center px-6 py-2 text-gray-700 hover:bg-green-50">
+                <span class="ml-3">Milestones</span>
+            </a>
+            <a href="#" class="flex items-center px-6 py-2 text-gray-700 hover:bg-green-50">
+                <span class="ml-3">Resources</span>
+            </a>
+            <a href="#" class="flex items-center px-6 py-2 text-gray-700 hover:bg-green-50">
+                <span class="ml-3">Advisors</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="ml-64 p-8 space-y-8">
+
+        <!-- Breadcrumb / Header -->
+        <div class="flex items-center justify-between">
+            <div class="text-sm text-gray-600">
+                Home › Dashboard
+            </div>
+            <button class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+        New Roadmap
+      </button>
+        </div>
+
+        <!-- Metric Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow">
+                <p class="text-sm text-gray-500">Total Roadmaps</p>
+                <h3 class="text-3xl font-bold">2</h3>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow">
+                <p class="text-sm text-gray-500">Avg. MCAT Score</p>
+                <h3 class="text-3xl font-bold">512</h3>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow">
+                <p class="text-sm text-gray-500">Upcoming Deadline</p>
+                <h3 class="text-3xl font-bold">May 30, 2025</h3>
+            </div>
+        </div>
+
+        <!-- Upcoming Milestones Table -->
+        <div class="bg-white rounded-xl shadow overflow-x-auto">
+            <table class="w-full text-left">
+                <thead class="bg-gray-100">
+                    <tr>
+                        <th class="p-4 text-sm font-medium text-gray-600">Milestone</th>
+                        <th class="p-4 text-sm font-medium text-gray-600">Due Date</th>
+                        <th class="p-4 text-sm font-medium text-gray-600">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b">
+                        <td class="p-4">Complete 100 Shadowing Hours</td>
+                        <td class="p-4">2025-06-15</td>
+                        <td class="p-4 text-green-600 font-semibold">In Progress</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="p-4">Submit Primary Application</td>
+                        <td class="p-4">2025-08-01</td>
+                        <td class="p-4 text-yellow-600 font-semibold">Pending</td>
+                    </tr>
+                    <tr>
+                        <td class="p-4">Gather Letters of Rec</td>
+                        <td class="p-4">2025-07-01</td>
+                        <td class="p-4 text-gray-500 font-semibold">Not Started</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Feature Panels -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+            <!-- Personalized Roadmap Preview -->
+            <div class="bg-white p-6 rounded-xl shadow">
+                <h4 class="font-bold text-xl mb-4">Personalized Roadmap Preview</h4>
+                <p class="text-gray-600 mb-4">
+                    See a snippet of your dynamic 4-year plan, tailored to your dream school (Stanford University).
+                </p>
+                <div class="h-48 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400">
+                    Roadmap Preview (placeholder)
+                </div>
+            </div>
+
+            <!-- Advisor Notes -->
+            <div class="bg-white p-6 rounded-xl shadow">
+                <h4 class="font-bold text-xl mb-4">Advisor Notes</h4>
+                <ul class="space-y-4 text-gray-700">
+                    <li>
+                        <p class="font-semibold">Dr. Smith</p>
+                        <p class="text-sm">“Consider adding more research hours in Year 2.”</p>
+                    </li>
+                    <li>
+                        <p class="font-semibold">Prof. Lee</p>
+                        <p class="text-sm">“Start MCAT content review sooner.”</p>
+                    </li>
+                    <li>
+                        <p class="font-semibold">Dr. Patel</p>
+                        <p class="text-sm">“Line up your letters of recommendation early.”</p>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

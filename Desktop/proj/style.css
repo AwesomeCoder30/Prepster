@@ -374,3 +374,9 @@ html {
         opacity: 1;
     }
 }
+
+@media (max-width: 1023px) {
+    #goodbye {
+        display: none !important;
+    }
+}
