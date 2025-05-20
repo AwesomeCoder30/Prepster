@@ -155,3 +155,8 @@ window.addEventListener("load", () => {
         scrollList.appendChild(clone);
     });
 });
+
+document.getElementById('nav-toggle').addEventListener('click', () => {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('hidden');
+});

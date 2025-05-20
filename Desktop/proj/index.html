@@ -30,55 +30,56 @@
 
 
 <body class="relative bg-white text-gray-900 dark:bg-gray-900 dark:text-white scroll-smooth snap-y snap-mandatory overflow-y-scroll h-screen">
-    <header class="bg-white dark:bg-gray-800 shadow py-3 sticky top-0 z-50 text-gray-900 dark:text-white">
-        <div class="container mx-auto flex items-center justify-between relative px-4">
-            <h1 class="text-lg font-bold" style="font-family: 'Libre Baskerville', serif;">
+    <header class="fixed top-0 left-0 w-full bg-white dark:bg-gray-800 shadow z-50">
+        <div class="container mx-auto flex items-center justify-between px-4 py-3">
+            <!-- Logo -->
+            <h1 class="text-xl font-bold text-gray-900 dark:text-white" style="font-family: 'Libre Baskerville', serif;">
                 Prepster
             </h1>
 
-            <nav class="absolute left-1/2 transform -translate-x-1/2 flex space-x-6 text-xs font-medium">
-                <a href="#features" class="hover:text-green-600 transition">Features</a>
-                <a href="#about" class="hover:text-green-600 transition">About</a>
-                <a href="#testimonials" class="hover:text-green-600 transition">Testimonials</a>
-                <a href="#get-started" class="hover:text-green-600 transition">Get Started</a>
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-6 text-sm font-medium text-gray-800 dark:text-gray-200">
+                <a href="#features" class="hover:text-green-600">Features</a>
+                <a href="#about" class="hover:text-green-600">About</a>
+                <a href="#testimonials" class="hover:text-green-600">Testimonials</a>
+                <a href="#get-started" class="hover:text-green-600">Get Started</a>
             </nav>
 
-            <div id="login-wrapper">
-                <a href="#get-started" class="bg-green-600 text-white px-4 py-2 rounded text-xs font-medium hover:bg-green-700 transition">
+            <!-- Waitlist Button -->
+            <div class="hidden md:block">
+                <a href="#get-started" class="bg-green-600 text-white px-6 py-3 rounded text-sm font-medium hover:bg-green-700 transition">
               Waitlist
             </a>
-                <!-- <button id="login-toggle" class="px-5 py-2 text-lg bg-green-600 text-white rounded hover:bg-green-700 font-semibold transition">
-                    Login
-                </button>
-                <div id="login-form" class="absolute top-20 right-4 w-96 h-[32rem] transform opacity-0 transition-all duration-300 ease-in-out bg-white dark:bg-gray-900 shadow-xl border rounded-lg z-50 hidden p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-center mb-6">
-                            <span id="form-title" class="text-xl font-bold">Sign In</span>
-                            <button id="login-close" class="text-gray-500 hover:text-red-600 text-xl font-bold">&times;</button>
-                        </div>
-                        <div class="overflow-hidden w-full">
-                            <div id="form-slider" class="flex w-[200%] transition-transform duration-300 ease-in-out">
-                                <div class="w-full flex-shrink-0 space-y-4">
-                                    <input type="email" placeholder="Email" class="w-full py-3 px-4 border border-gray-300 rounded-md text-base dark:bg-gray-800 dark:border-gray-600 dark:text-white" />
-                                    <input type="password" placeholder="Password" class="w-full py-3 px-4 border border-gray-300 rounded-md text-base dark:bg-gray-800 dark:border-gray-600 dark:text-white" />
-                                    <button type="submit" class="w-full py-3 bg-green-600 text-white rounded-md hover:bg-green-700 text-base font-semibold">Login</button>
-                                </div>
-                                <div class="w-full flex-shrink-0 space-y-4">
-                                    <input type="text" placeholder="Full Name" class="w-full py-3 px-4 border border-gray-300 rounded-md text-base dark:bg-gray-800 dark:border-gray-600 dark:text-white" />
-                                    <input type="email" placeholder="Email" class="w-full py-3 px-4 border border-gray-300 rounded-md text-base dark:bg-gray-800 dark:border-gray-600 dark:text-white" />
-                                    <input type="password" placeholder="Password" class="w-full py-3 px-4 border border-gray-300 rounded-md text-base dark:bg-gray-800 dark:border-gray-600 dark:text-white" />
-                                    <button type="submit" class="w-full py-3 bg-green-600 text-white rounded-md hover:bg-green-700 text-base font-semibold">Sign Up</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-sm text-center mt-4">
-                        <span id="toggle-prompt">Don't have an account?</span>
-                        <button id="toggle-form" class="text-green-700 hover:underline font-semibold ml-1">Sign Up</button>
-                    </div>
-                </div> -->
             </div>
+
+            <!-- Mobile Hamburger -->
+            <button id="nav-toggle" class="md:hidden focus:outline-none text-gray-800 dark:text-gray-200">
+            <!-- Simple hamburger icon -->
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
         </div>
+
+        <!-- Mobile Menu (hidden by default) -->
+        <nav id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+            <ul class="flex flex-col px-4 py-2 space-y-2 text-gray-800 dark:text-gray-200">
+                <li><a href="#features" class="block hover:text-green-600">Features</a></li>
+                <li><a href="#about" class="block hover:text-green-600">About</a></li>
+                <li><a href="#testimonials" class="block hover:text-green-600">Testimonials</a></li>
+                <li><a href="#get-started" class="block hover:text-green-600">Get Started</a></li>
+                <li>
+                    <a href="#get-started" class="block bg-green-600 text-white px-3 py-1 rounded text-xs font-medium hover:bg-green-700 transition text-center">
+                Waitlist
+              </a>
+                </li>
+            </ul>
+        </nav>
     </header>
 
 
@@ -86,17 +87,6 @@
         <canvas id="medicalCanvas" class="absolute top-0 left-0 w-full h-full z-0"></canvas>
 
         <div class="relative z-10 px-6">
-            <h1 class="text-6xl md:text-6xl font-extrabold mb-8 leading-tight text-gray-900 text-center" style="font-family: 'Libre Baskerville', serif;">
-                <span class="slide-letter">P</span>
-                <span class="slide-letter">r</span>
-                <span class="slide-letter">e</span>
-                <span class="slide-letter">p</span>
-                <span class="slide-letter">s</span>
-                <span class="slide-letter">t</span>
-                <span class="slide-letter">e</span>
-                <span class="slide-letter">r</span>
-            </h1>
-
             <h2 class="text-3xl md:text-4xl font-semibold mb-6 max-w-3xl mx-auto text-gray-700">
                 Your Personal Pre-Med AI
             </h2>
@@ -110,7 +100,7 @@
             </a>
 
             <div class="mt-8 w-full flex justify-center">
-                <img src="/assets/website_insight.png" alt="Dashboard preview of personalized pre-med roadmap" class="w-[80vw] max-w-screen-lg rounded-2xl shadow-lg border border-gray-200" />
+                <img src="/assets/dash_preview.png" alt="Dashboard preview of personalized pre-med roadmap" class="w-[80vw] max-w-screen-lg rounded-2xl shadow-lg border border-gray-200" />
             </div>
         </div>
     </section>
@@ -136,7 +126,6 @@
 
     <section id="roadmap" class="py-20 bg-white">
         <div class="container mx-auto px-6">
-            <!-- Dream School Header: centered, Stanford in crimson -->
             <p class="text-lg font-semibold mb-2">
                 Dream School:
             </p>
@@ -148,153 +137,171 @@
             </h2>
 
             <!-- Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            <div class="
+              relative
+              mx-auto
+              max-w-7xl
+              p-8
+              bg-white/60
+              backdrop-blur-sm
+              border
+              border-gray-200
+              rounded-3xl
+              shadow-2xl
+              opacity-80
+            " style="
+              clip-path: polygon(
+                0% 0%, 
+                100% 0%, 
+                100% 85%, 
+                60% 85%, 
+                50% 100%, 
+                40% 85%, 
+                0% 85%
+              );
+            ">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                    <div class="bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-md">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800 text-center">1st Year Goals</h3>
+                        <ul class="space-y-6 text-gray-700 text-base">
+                            <li>
+                                📋 <strong>300 Clinical Hours</strong>
+                                <details class="mt-2">
+                                    <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
+                                    <p class="mt-2 text-gray-600">
+                                        • Join Stanford’s Clinical Immersion Program<br> • Shadow doctors at Stanford Health Care
+                                    </p>
+                                </details>
+                            </li>
+                            <li>
+                                📋 <strong>300 Volunteer Hours</strong>
+                                <details class="mt-2">
+                                    <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
+                                    <p class="mt-2 text-gray-600">
+                                        • Volunteer at the Bing Overseas Studies Program<br> • Tutor local high-school students
+                                    </p>
+                                </details>
+                            </li>
+                            <li>
+                                📋 <strong>100 Shadowing Hours</strong>
+                                <details class="mt-2">
+                                    <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
+                                    <p class="mt-2 text-gray-600">
+                                        • Network through Stanford Pre-Med Club<br> • Attend hospital shadowing workshops
+                                    </p>
+                                </details>
+                            </li>
+                            <li>
+                                📋 <strong>200 Research Hours</strong>
+                                <details class="mt-2">
+                                    <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
+                                    <p class="mt-2 text-gray-600">
+                                        • Apply to labs via Stanford Undergrad Research Database<br> • Assist on a faculty-led project
+                                    </p>
+                                </details>
+                            </li>
+                        </ul>
+                    </div>
 
-                <!-- Year 1 -->
-                <div class="bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-md">
-                    <h3 class="text-2xl font-bold mb-6 text-gray-800 text-center">1st Year Goals</h3>
-                    <ul class="space-y-6 text-gray-700 text-base">
-                        <li>
-                            📋 <strong>300 Clinical Hours</strong>
-                            <details class="mt-2">
-                                <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
-                                <p class="mt-2 text-gray-600">
-                                    • Join Stanford’s Clinical Immersion Program<br> • Shadow doctors at Stanford Health Care
-                                </p>
-                            </details>
-                        </li>
-                        <li>
-                            📋 <strong>300 Volunteer Hours</strong>
-                            <details class="mt-2">
-                                <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
-                                <p class="mt-2 text-gray-600">
-                                    • Volunteer at the Bing Overseas Studies Program<br> • Tutor local high-school students
-                                </p>
-                            </details>
-                        </li>
-                        <li>
-                            📋 <strong>100 Shadowing Hours</strong>
-                            <details class="mt-2">
-                                <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
-                                <p class="mt-2 text-gray-600">
-                                    • Network through Stanford Pre-Med Club<br> • Attend hospital shadowing workshops
-                                </p>
-                            </details>
-                        </li>
-                        <li>
-                            📋 <strong>200 Research Hours</strong>
-                            <details class="mt-2">
-                                <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
-                                <p class="mt-2 text-gray-600">
-                                    • Apply to labs via Stanford Undergrad Research Database<br> • Assist on a faculty-led project
-                                </p>
-                            </details>
-                        </li>
-                    </ul>
+                    <div class="bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-md">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800 text-center">2nd Year Goals</h3>
+                        <ul class="space-y-6 text-gray-700 text-base">
+                            <li>
+                                📋 <strong>Leadership Roles</strong>
+                                <details class="mt-2">
+                                    <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
+                                    <p class="mt-2 text-gray-600">
+                                        • Serve as officer in Stanford Pre-Med Club<br> • Organize volunteer expeditions
+                                    </p>
+                                </details>
+                            </li>
+                            <li>
+                                📋 <strong>Join a Research Lab</strong>
+                                <details class="mt-2">
+                                    <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
+                                    <p class="mt-2 text-gray-600">
+                                        • Reach out to professors in Bio-E department<br> • Volunteer for ongoing studies
+                                    </p>
+                                </details>
+                            </li>
+                            <li>
+                                📋 <strong>MCAT Prep (light)</strong>
+                                <details class="mt-2">
+                                    <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
+                                    <p class="mt-2 text-gray-600">
+                                        • Start with AAMC diagnostic exam<br> • Join an MCAT study group on campus
+                                    </p>
+                                </details>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-md">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800 text-center">3rd Year Goals</h3>
+                        <ul class="space-y-6 text-gray-700 text-base">
+                            <li>
+                                📋 <strong>Take the MCAT</strong>
+                                <details class="mt-2">
+                                    <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
+                                    <p class="mt-2 text-gray-600">
+                                        • Register on AAMC portal 6 months out<br> • Complete weekly full-length practice exams
+                                    </p>
+                                </details>
+                            </li>
+                            <li>
+                                📋 <strong>Letters of Recommendation</strong>
+                                <details class="mt-2">
+                                    <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
+                                    <p class="mt-2 text-gray-600">
+                                        • Ask research mentor & professors early<br> • Provide them your CV & personal statement draft
+                                    </p>
+                                </details>
+                            </li>
+                            <li>
+                                📋 <strong>Write Personal Statement</strong>
+                                <details class="mt-2">
+                                    <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
+                                    <p class="mt-2 text-gray-600">
+                                        • Draft over Winter break<br> • Get feedback from Stanford writing center
+                                    </p>
+                                </details>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-md">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800 text-center">4th Year Goals</h3>
+                        <ul class="space-y-6 text-gray-700 text-base">
+                            <li>
+                                📋 <strong>Submit Secondaries</strong>
+                                <details class="mt-2">
+                                    <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
+                                    <p class="mt-2 text-gray-600">
+                                        • Prioritize schools by deadline<br> • Reuse core essays where possible
+                                    </p>
+                                </details>
+                            </li>
+                            <li>
+                                📋 <strong>Attend Interviews</strong>
+                                <details class="mt-2">
+                                    <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
+                                    <p class="mt-2 text-gray-600">
+                                        • Practice with mock MMI sessions<br> • Research each school’s mission statement
+                                    </p>
+                                </details>
+                            </li>
+                            <li>
+                                📋 <strong>Decision Time</strong>
+                                <details class="mt-2">
+                                    <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
+                                    <p class="mt-2 text-gray-600">
+                                        • Compare financial aid packages<br> • Visit Stanford campus if offered
+                                    </p>
+                                </details>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-
-                <!-- Year 2 -->
-                <div class="bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-md">
-                    <h3 class="text-2xl font-bold mb-6 text-gray-800 text-center">2nd Year Goals</h3>
-                    <ul class="space-y-6 text-gray-700 text-base">
-                        <li>
-                            📋 <strong>Leadership Roles</strong>
-                            <details class="mt-2">
-                                <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
-                                <p class="mt-2 text-gray-600">
-                                    • Serve as officer in Stanford Pre-Med Club<br> • Organize volunteer expeditions
-                                </p>
-                            </details>
-                        </li>
-                        <li>
-                            📋 <strong>Join a Research Lab</strong>
-                            <details class="mt-2">
-                                <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
-                                <p class="mt-2 text-gray-600">
-                                    • Reach out to professors in Bio-E department<br> • Volunteer for ongoing studies
-                                </p>
-                            </details>
-                        </li>
-                        <li>
-                            📋 <strong>MCAT Prep (light)</strong>
-                            <details class="mt-2">
-                                <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
-                                <p class="mt-2 text-gray-600">
-                                    • Start with AAMC diagnostic exam<br> • Join an MCAT study group on campus
-                                </p>
-                            </details>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Year 3 -->
-                <div class="bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-md">
-                    <h3 class="text-2xl font-bold mb-6 text-gray-800 text-center">3rd Year Goals</h3>
-                    <ul class="space-y-6 text-gray-700 text-base">
-                        <li>
-                            📋 <strong>Take the MCAT</strong>
-                            <details class="mt-2">
-                                <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
-                                <p class="mt-2 text-gray-600">
-                                    • Register on AAMC portal 6 months out<br> • Complete weekly full-length practice exams
-                                </p>
-                            </details>
-                        </li>
-                        <li>
-                            📋 <strong>Letters of Recommendation</strong>
-                            <details class="mt-2">
-                                <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
-                                <p class="mt-2 text-gray-600">
-                                    • Ask research mentor & professors early<br> • Provide them your CV & personal statement draft
-                                </p>
-                            </details>
-                        </li>
-                        <li>
-                            📋 <strong>Write Personal Statement</strong>
-                            <details class="mt-2">
-                                <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
-                                <p class="mt-2 text-gray-600">
-                                    • Draft over Winter break<br> • Get feedback from Stanford writing center
-                                </p>
-                            </details>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Year 4 -->
-                <div class="bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-md">
-                    <h3 class="text-2xl font-bold mb-6 text-gray-800 text-center">4th Year Goals</h3>
-                    <ul class="space-y-6 text-gray-700 text-base">
-                        <li>
-                            📋 <strong>Submit Secondaries</strong>
-                            <details class="mt-2">
-                                <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
-                                <p class="mt-2 text-gray-600">
-                                    • Prioritize schools by deadline<br> • Reuse core essays where possible
-                                </p>
-                            </details>
-                        </li>
-                        <li>
-                            📋 <strong>Attend Interviews</strong>
-                            <details class="mt-2">
-                                <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
-                                <p class="mt-2 text-gray-600">
-                                    • Practice with mock MMI sessions<br> • Research each school’s mission statement
-                                </p>
-                            </details>
-                        </li>
-                        <li>
-                            📋 <strong>Decision Time</strong>
-                            <details class="mt-2">
-                                <summary class="cursor-pointer text-green-600 hover:underline">How?</summary>
-                                <p class="mt-2 text-gray-600">
-                                    • Compare financial aid packages<br> • Visit Stanford campus if offered
-                                </p>
-                            </details>
-                        </li>
-                    </ul>
-                </div>
-
             </div>
         </div>
     </section>
