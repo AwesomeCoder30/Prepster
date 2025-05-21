@@ -160,3 +160,22 @@ document.getElementById('nav-toggle').addEventListener('click', () => {
     const menu = document.getElementById('mobile-menu');
     menu.classList.toggle('hidden');
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const aiSection = document.getElementById("ai-mvp");
+    const roadmapSection = document.getElementById("roadmap");
+    const showBtn = document.getElementById("show-roadmap-btn");
+    const hideBtn = document.getElementById("hide-roadmap-btn");
+
+    showBtn.addEventListener("click", () => {
+        aiSection.classList.add("hidden");
+        roadmapSection.classList.remove("hidden");
+        roadmapSection.scrollIntoView({ behavior: "smooth" });
+    });
+
+    hideBtn.addEventListener("click", () => {
+        roadmapSection.classList.add("hidden");
+        aiSection.classList.remove("hidden");
+        aiSection.scrollIntoView({ behavior: "smooth" });
+    });
+});
