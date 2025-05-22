@@ -451,6 +451,39 @@ html {
 }
 
 
+/* Staggered Roadmap Card Animation */
+
+.roadmap-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.roadmap-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Delay for staggering - will be applied via JS */
+
+.roadmap-card:nth-child(1).is-visible {
+    transition-delay: 0.1s;
+}
+
+.roadmap-card:nth-child(2).is-visible {
+    transition-delay: 0.2s;
+}
+
+.roadmap-card:nth-child(3).is-visible {
+    transition-delay: 0.3s;
+}
+
+.roadmap-card:nth-child(4).is-visible {
+    transition-delay: 0.4s;
+}
+
+
 /* Features Section Card Hover Effect */
 
 #features .container>div {
@@ -481,4 +514,31 @@ html {
 #features .container>div p {
     color: #4b5563;
     /* Tailwind gray-600 */
+}
+
+.gradient-text {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #10B981, #059669, #047857);
+}
+
+.cta-button {
+    background-image: linear-gradient(to right, #10B981 0%, #059669 50%, #047857 100%);
+    background-size: 200% auto;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    transition: all 0.4s ease-out;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}
+
+.cta-button:hover {
+    background-position: right center;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(5, 150, 105, 0.5);
 }

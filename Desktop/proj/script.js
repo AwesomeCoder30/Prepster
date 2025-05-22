@@ -197,4 +197,27 @@ document.addEventListener("DOMContentLoaded", () => {
         aiSection.classList.remove("hidden");
         aiSection.scrollIntoView({ behavior: "smooth" });
     });
+
+    // Staggered animation for roadmap cards
+    const roadmapCardsContainer = document.getElementById("roadmap-cards-container");
+    if (roadmapCardsContainer) {
+        const cardObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const cards = roadmapCardsContainer.querySelectorAll(".roadmap-card");
+                    cards.forEach((card, index) => {
+                        // The CSS handles the delay based on :nth-child, 
+                        // but if we wanted JS-based delay, it would be here:
+                        // setTimeout(() => {
+                        // card.classList.add("is-visible");
+                        // }, index * 200); // 200ms delay between cards
+                        card.classList.add("is-visible");
+                    });
+                    observer.unobserve(roadmapCardsContainer); // Stop observing after triggering once
+                }
+            });
+        }, { threshold: 0.2 }); // Trigger when 20% of the container is visible
+
+        cardObserver.observe(roadmapCardsContainer);
+    }
 });

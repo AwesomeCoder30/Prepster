@@ -46,7 +46,7 @@
     <header class="fixed top-0 left-0 w-full bg-white dark:bg-gray-800 shadow z-50">
         <div class="container mx-auto flex items-center justify-between px-4 py-3">
             <!-- Logo -->
-            <h1 class="text-xl font-bold text-gray-900 dark:text-white" style="font-family: 'Libre Baskerville', serif;">
+            <h1 class="text-xl font-bold text-gray-900 dark:text-white gradient-text" style="font-family: 'Libre Baskerville', serif;">
                 Prepster
             </h1>
 
@@ -103,7 +103,7 @@
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-                <a href="#get-started" class="w-full sm:w-auto bg-green-600 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-green-700 transition-all transform hover:scale-105">
+                <a href="#get-started" class="w-full sm:w-auto cta-button">
                     Get Started
                 </a>
                 <a href="#ai-mvp" class="w-full sm:w-auto border-2 border-green-600 text-green-600 px-6 py-3 rounded-full text-sm font-semibold hover:bg-green-50 transition-all transform hover:scale-105">
@@ -159,7 +159,7 @@
 
                 <div class="w-full lg:w-1/2 flex justify-center">
                     <div class="w-full max-w-md h-64 sm:h-80 bg-gray-200 rounded-2xl flex items-center justify-center shadow-lg transition-transform hover:scale-[1.02]">
-                        <span class="text-gray-500 text-sm sm:text-base text-center px-4">Dynamic AI-Generated Roadmap Visualization Coming Soon!</span>
+                        <span class="text-gray-500 text-sm sm:text-base text-center px-4">placeholder</span>
                     </div>
                 </div>
 
@@ -175,11 +175,11 @@
             <h3 class="text-2xl md:text-3xl font-bold mb-6" style="color: #8C1515;">
                 Stanford University
             </h3>
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-gray-900 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-gray-900 text-center gradient-text">
                 Curated 4-Year Pre-Med Journey
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-                <div class="bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-md">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12" id="roadmap-cards-container">
+                <div class="roadmap-card bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-md">
                     <h3 class="text-2xl font-bold mb-6 text-gray-800 text-center">1st Year Goals</h3>
                     <ul class="space-y-6 text-gray-700 text-base">
                         <li>
@@ -221,7 +221,7 @@
                     </ul>
                 </div>
 
-                <div class="bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-md">
+                <div class="roadmap-card bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-md">
                     <h3 class="text-2xl font-bold mb-6 text-gray-800 text-center">2nd Year Goals</h3>
                     <ul class="space-y-6 text-gray-700 text-base">
                         <li>
@@ -254,7 +254,7 @@
                     </ul>
                 </div>
 
-                <div class="bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-md">
+                <div class="roadmap-card bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-md">
                     <h3 class="text-2xl font-bold mb-6 text-gray-800 text-center">3rd Year Goals</h3>
                     <ul class="space-y-6 text-gray-700 text-base">
                         <li>
@@ -287,7 +287,7 @@
                     </ul>
                 </div>
 
-                <div class="bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-md">
+                <div class="roadmap-card bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-md">
                     <h3 class="text-2xl font-bold mb-6 text-gray-800 text-center">4th Year Goals</h3>
                     <ul class="space-y-6 text-gray-700 text-base">
                         <li>
@@ -448,7 +448,7 @@
                 <input type="text" name="full_name" placeholder="Full Name" required class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-lg">
                 <input type="email" name="email" placeholder="Email Address" required class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-lg">
                 <input type="text" name="year" placeholder="Current Year (e.g., Sophomore, Gap Year)" class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-lg">
-                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-lg font-bold text-lg">
+                <button type="submit" class="w-full cta-button py-4 text-lg">
               Join
             </button>
             </form>
