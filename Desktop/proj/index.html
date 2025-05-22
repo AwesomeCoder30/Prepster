@@ -82,25 +82,32 @@
         </nav>
     </header>
 
-
     <section id="hero" class="relative w-full min-h-screen flex items-center justify-center text-center bg-green-50 snap-start overflow-hidden">
         <canvas id="medicalCanvas" class="absolute top-0 left-0 w-full h-full z-0"></canvas>
 
-        <div class="relative z-10 px-6">
-            <h2 class="text-3xl md:text-4xl font-semibold mb-6 max-w-3xl mx-auto text-black" style="font-family: 'Libre Baskerville', serif;">
+        <div class="relative z-10 px-4 sm:px-6 max-w-7xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 sm:mb-6 max-w-3xl mx-auto text-black" style="font-family: 'Libre Baskerville', serif;">
                 Your Personal Pre-Med AI
             </h2>
 
-            <p class="text-xl md:text-xl text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+            <p class="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-6 sm:mb-10 leading-relaxed">
                 Personalized roadmaps, MCAT planners, and opportunity finders — everything you need to crush your pre-med journey in one place.
             </p>
 
-            <a href="#get-started" class="bg-green-600 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-green-700 transition">
-                Get Started
-            </a>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                <a href="#get-started" class="w-full sm:w-auto bg-green-600 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-green-700 transition-all transform hover:scale-105">
+                    Get Started
+                </a>
+                <a href="#ai-mvp" class="w-full sm:w-auto border-2 border-green-600 text-green-600 px-6 py-3 rounded-full text-sm font-semibold hover:bg-green-50 transition-all transform hover:scale-105">
+                    Learn More
+                </a>
+            </div>
 
-            <div class="mt-8 w-full flex justify-center">
-                <img src="/assets/dash_preview.png" alt="Dashboard preview of personalized pre-med roadmap" class="w-[80vw] max-w-screen-lg rounded-2xl shadow-lg border border-gray-200" />
+            <div class="mt-8 sm:mt-12 w-full flex justify-center">
+                <div class="relative w-[90vw] sm:w-[80vw] max-w-screen-lg">
+                    <img src="/assets/dash_preview.png" alt="Dashboard preview of personalized pre-med roadmap" class="w-full rounded-2xl shadow-lg border border-gray-200 transition-transform hover:scale-[1.02]" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-green-50/30 to-transparent rounded-2xl pointer-events-none"></div>
+                </div>
             </div>
         </div>
     </section>
