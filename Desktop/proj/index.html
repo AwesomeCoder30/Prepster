@@ -12,19 +12,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
-<div id="free-trial-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-    <div id="modal-content" class="bg-white rounded-lg shadow-xl p-6 text-center max-w-sm mx-auto relative transform scale-90 opacity-0 transition-all duration-500">
-        <button id="close-modal" class="absolute top-3 right-3 text-gray-500 hover:text-red-600 text-2xl font-bold">&times;</button>
+<div id="free-trial-modal" class="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center z-50 hidden">
+    <div id="modal-content" class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 text-center max-w-md mx-auto relative transform scale-90 opacity-0 transition-all duration-500 border border-gray-100 dark:border-gray-700">
+        <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
 
-        <h2 class="text-2xl font-bold mb-4">🎉 2-Week Free Trial!</h2>
+        <div class="mb-2">
+            <span class="text-4xl">🎉</span>
+        </div>
 
-        <p class="mb-6 text-gray-700 text-base leading-relaxed">
-            Get full access to your personalized Pre-Med Roadmap free for 14 days.<br/> Cancel anytime, no risk.
+        <h2 class="text-3xl font-bold mb-4 dark:text-white">Join the Waitlist!</h2>
+
+        <p class="mb-8 text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+            Be among the first to experience Prepster's AI-powered Pre-Med Roadmap. Join our exclusive waitlist for early access and special launch benefits!
         </p>
 
-        <a href="#get-started" class="bg-green-600 text-white px-6 py-2 rounded-full font-medium hover:bg-green-700 text-sm inline-block">
-      Start My Free Trial
-    </a>
+        <div class="space-y-4">
+            <a href="#get-started" class="block w-full bg-green-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-green-700 transform hover:scale-105 transition-all duration-300">
+                Join
+            </a>
+            <button id="close-modal-secondary" class="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors">
+                No thanks, maybe later
+            </button>
+        </div>
     </div>
 </div>
 

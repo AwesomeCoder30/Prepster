@@ -119,6 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById("free-trial-modal");
     const modalContent = document.getElementById("modal-content");
     const closeModal = document.getElementById("close-modal");
+    const closeModalSecondary = document.getElementById("close-modal-secondary");
 
     setTimeout(() => {
         modal.classList.remove("hidden");
@@ -129,6 +130,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 7000);
 
     closeModal.addEventListener("click", () => {
+        modalContent.classList.add("scale-90", "opacity-0");
+        setTimeout(() => {
+            modal.classList.add("hidden");
+        }, 300);
+    });
+
+    closeModalSecondary.addEventListener("click", () => {
         modalContent.classList.add("scale-90", "opacity-0");
         setTimeout(() => {
             modal.classList.add("hidden");
