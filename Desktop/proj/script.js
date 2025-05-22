@@ -170,6 +170,17 @@ document.getElementById('nav-toggle').addEventListener('click', () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+    const detailsElements = document.querySelectorAll("#roadmap details");
+    detailsElements.forEach(details => {
+        details.addEventListener("toggle", () => {
+            if (details.open) {
+                details.classList.add("open");
+            } else {
+                details.classList.remove("open");
+            }
+        });
+    });
+
     const aiSection = document.getElementById("ai-mvp");
     const roadmapSection = document.getElementById("roadmap");
     const showBtn = document.getElementById("show-roadmap-btn");

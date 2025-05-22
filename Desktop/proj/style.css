@@ -380,3 +380,105 @@ html {
         display: none !important;
     }
 }
+
+#roadmap details {
+    background-color: #f9fafb;
+    /* Tailwind gray-50 */
+    border: 1px solid #e5e7eb;
+    /* Tailwind gray-200 */
+    border-radius: 0.75rem;
+    /* Tailwind rounded-xl */
+    margin-bottom: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+#roadmap details:hover {
+    border-color: #34d399;
+    /* Tailwind green-400 */
+}
+
+#roadmap summary {
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+    /* Tailwind font-semibold */
+    color: #374151;
+    /* Tailwind gray-700 */
+    cursor: pointer;
+    list-style: none;
+    /* Remove default marker */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#roadmap summary::-webkit-details-marker {
+    display: none;
+    /* Hide Safari default marker */
+}
+
+#roadmap summary::after {
+    content: '+';
+    font-size: 1.5em;
+    color: #10b981;
+    /* Tailwind green-600 */
+    transition: transform 0.3s ease-in-out;
+}
+
+#roadmap details[open] {
+    background-color: #ffffff;
+    /* White */
+    border-color: #10b981;
+    /* Tailwind green-600 */
+}
+
+#roadmap details[open] summary {
+    color: #10b981;
+    /* Tailwind green-600 */
+    border-bottom: 1px solid #e5e7eb;
+    /* Tailwind gray-200 */
+}
+
+#roadmap details[open] summary::after {
+    transform: rotate(45deg);
+}
+
+#roadmap details p {
+    padding: 1rem 1.5rem;
+    color: #4b5563;
+    /* Tailwind gray-600 */
+    line-height: 1.6;
+}
+
+
+/* Features Section Card Hover Effect */
+
+#features .container>div {
+    padding: 1.5rem;
+    /* p-6 */
+    border-radius: 0.75rem;
+    /* rounded-xl */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #ffffff;
+    /* bg-white for the cards themselves */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    /* shadow-md */
+}
+
+#features .container>div:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    /* shadow-lg */
+    background-color: #f9fafb;
+    /* Slightly different background on hover, like gray-50 */
+}
+
+#features .container>div h3 {
+    color: #1f2937;
+    /* Tailwind gray-800 */
+}
+
+#features .container>div p {
+    color: #4b5563;
+    /* Tailwind gray-600 */
+}
