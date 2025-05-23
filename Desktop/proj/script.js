@@ -21,33 +21,43 @@ document.addEventListener("DOMContentLoaded", () => {
     let isVisible = false;
     let isSignup = false;
 
-    loginToggle.addEventListener("click", () => {
-        isVisible = !isVisible;
-        loginForm.classList.toggle("hidden", !isVisible);
-        loginForm.classList.toggle("opacity-0", !isVisible);
-        loginForm.classList.toggle("translate-x-10", !isVisible);
-        loginForm.classList.toggle("opacity-100", isVisible);
-        loginForm.classList.toggle("translate-x-0", isVisible);
-    });
+    if (loginToggle) {
+        loginToggle.addEventListener("click", () => {
+            isVisible = !isVisible;
+            if (loginForm) {
+                loginForm.classList.toggle("hidden", !isVisible);
+                loginForm.classList.toggle("opacity-0", !isVisible);
+                loginForm.classList.toggle("translate-x-10", !isVisible);
+                loginForm.classList.toggle("opacity-100", isVisible);
+                loginForm.classList.toggle("translate-x-0", isVisible);
+            }
+        });
+    }
 
-    loginClose.addEventListener("click", () => {
-        isVisible = false;
-        loginForm.classList.add("hidden");
-        loginForm.classList.add("opacity-0");
-        loginForm.classList.add("translate-x-10");
-        loginForm.classList.remove("opacity-100");
-        loginForm.classList.remove("translate-x-0");
-    });
+    if (loginClose) {
+        loginClose.addEventListener("click", () => {
+            isVisible = false;
+            if (loginForm) {
+                loginForm.classList.add("hidden");
+                loginForm.classList.add("opacity-0");
+                loginForm.classList.add("translate-x-10");
+                loginForm.classList.remove("opacity-100");
+                loginForm.classList.remove("translate-x-0");
+            }
+        });
+    }
 
-    toggleBtn.addEventListener("click", () => {
-        isSignup = !isSignup;
-        formTitle.textContent = isSignup ? "Sign Up" : "Sign In";
-        toggleBtn.textContent = isSignup ? "Login" : "Sign Up";
-        togglePrompt.textContent = isSignup ?
-            "Already have an account?" :
-            "Don't have an account?";
-        formSlider.style.transform = isSignup ? "translateX(-100%)" : "translateX(0)";
-    });
+    if (toggleBtn) {
+        toggleBtn.addEventListener("click", () => {
+            isSignup = !isSignup;
+            if (formTitle) formTitle.textContent = isSignup ? "Sign Up" : "Sign In";
+            if (toggleBtn) toggleBtn.textContent = isSignup ? "Login" : "Sign Up";
+            if (togglePrompt) togglePrompt.textContent = isSignup ?
+                "Already have an account?" :
+                "Don't have an account?";
+            if (formSlider) formSlider.style.transform = isSignup ? "translateX(-100%)" : "translateX(0)";
+        });
+    }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -164,9 +174,10 @@ window.addEventListener("load", () => {
     });
 });
 
-document.getElementById('nav-toggle').addEventListener('click', () => {
+document.getElementById('nav-toggle').addEventListener('click', function() {
     const menu = document.getElementById('mobile-menu');
-    menu.classList.toggle('hidden');
+    menu.classList.toggle('menu-active');
+    this.classList.toggle('active');
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -221,3 +232,51 @@ document.addEventListener("DOMContentLoaded", () => {
         cardObserver.observe(roadmapCardsContainer);
     }
 });
+
+/* Dark Mode Toggle Functionality - Commented Out
+document.addEventListener('DOMContentLoaded', () => {
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const htmlElement = document.documentElement;
+
+    // Function to apply the theme
+    const applyTheme = (theme) => {
+        if (theme === 'dark') {
+            htmlElement.classList.add('dark');
+            if(darkModeToggle) darkModeToggle.checked = true;
+        } else {
+            htmlElement.classList.remove('dark');
+            if(darkModeToggle) darkModeToggle.checked = false;
+        }
+    };
+
+    // Check for saved theme in localStorage and apply it
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        applyTheme(savedTheme);
+    } else {
+        // If no saved theme, check system preference
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        applyTheme(prefersDark ? 'dark' : 'light');
+    }
+
+    // Event listener for the toggle
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('change', () => {
+            if (darkModeToggle.checked) {
+                applyTheme('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                applyTheme('light');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    }
+
+    // Listen for changes in system preference (optional, but good for UX)
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        const newTheme = e.matches ? 'dark' : 'light';
+        applyTheme(newTheme);
+        localStorage.setItem('theme', newTheme); // Update localStorage as well
+    });
+});
+*/

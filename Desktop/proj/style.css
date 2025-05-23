@@ -2,6 +2,12 @@ html {
     scroll-behavior: smooth;
 }
 
+body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 .fade-in {
     opacity: 0;
     transform: translateY(20px);
@@ -124,8 +130,15 @@ html {
     content: "";
     height: 100%;
     position: absolute;
-    width: 150px;
+    width: 75px;
     z-index: 2;
+}
+
+@media (min-width: 640px) {
+    .slider::before,
+    .slider::after {
+        width: 150px;
+    }
 }
 
 .slider::before {
@@ -144,18 +157,22 @@ html {
 }
 
 .slide-track {
-    animation: scroll 40s linear infinite;
+    animation: scroll 60s linear infinite;
     display: flex;
-    width: calc(500px * 12);
+    width: calc(100vw * 12);
 }
 
 .slide {
-    width: 600px;
-    height: 220px;
+    width: 90vw;
+    max-width: 450px;
+    height: auto;
+    min-height: 220px;
     flex-shrink: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1rem;
+    box-sizing: border-box;
 }
 
 .testimonial-card {
@@ -177,7 +194,7 @@ html {
 }
 
 .testimonial-card:hover {
-    transform: scale(1.13);
+    transform: scale(1.08);
     box-shadow: 0 8px 16px rgba(52, 211, 153, 0.4);
     border: 2px solid #52937b;
     /* Soft green glow border */
@@ -201,7 +218,21 @@ html {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(-500px * 6));
+        transform: translateX(calc(-100vw * 6));
+    }
+}
+
+@media (min-width: 450px) {
+    .slide-track {
+        width: calc(450px * 12);
+    }
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-450px * 6));
+        }
     }
 }
 
@@ -542,3 +573,239 @@ html {
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(5, 150, 105, 0.5);
 }
+
+
+/* Secondary Button Styling (e.g., Learn More) */
+
+.secondary-button {
+    border: 2px solid #10B981;
+    /* Tailwind green-600 */
+    color: #10B981;
+    padding: 0.625rem 1.5rem;
+    /* Adjusted from py-3 px-6, text-sm */
+    border-radius: 9999px;
+    /* rounded-full */
+    font-size: 0.875rem;
+    /* text-sm */
+    font-weight: 600;
+    /* font-semibold */
+    transition: all 0.3s ease-out;
+    display: inline-block;
+    text-align: center;
+}
+
+.secondary-button:hover {
+    background-color: #10B981;
+    /* Tailwind green-600 */
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+}
+
+
+/* Enhanced Section Titles */
+
+.section-title-enhanced {
+    position: relative;
+    display: inline-block;
+    /* Or block if it should take full width before centering text */
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+    /* Default, adjust as needed */
+}
+
+.section-title-enhanced.text-center::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-image: linear-gradient(to right, #34D399, #10B981);
+    border-radius: 2px;
+}
+
+
+/* For left-aligned titles */
+
+.section-title-enhanced.text-left::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background-image: linear-gradient(to right, #34D399, #10B981);
+    border-radius: 2px;
+}
+
+
+/* Mobile Navigation Burger Animation */
+
+.burger-line {
+    display: block;
+    width: 24px;
+    /* Match original SVG width approx */
+    height: 2px;
+    /* Match original SVG stroke-width approx */
+    background-color: currentColor;
+    /* Uses text color from parent */
+    border-radius: 1px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, top 0.3s ease-in-out;
+}
+
+.top-line {
+    top: 8px;
+    /* Adjust for vertical centering within button h-8 (32px) */
+}
+
+.middle-line {
+    top: 15px;
+}
+
+.bottom-line {
+    top: 22px;
+}
+
+#nav-toggle.active .top-line {
+    top: 15px;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+#nav-toggle.active .middle-line {
+    opacity: 0;
+    transform: translateX(-50%) scaleX(0);
+}
+
+#nav-toggle.active .bottom-line {
+    top: 15px;
+    transform: translateX(-50%) rotate(-45deg);
+}
+
+
+/* Mobile Menu Animation */
+
+#mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out 0.1s, transform 0.3s ease-in-out 0.1s;
+}
+
+#mobile-menu.menu-active {
+    max-height: 500px;
+    /* Large enough to fit content */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Remove .hidden class if JS is toggling it, or ensure these styles override it */
+
+#mobile-menu.hidden {
+    /* If JS still adds .hidden, these initial states might be overridden. */
+    /* It's better if JS only toggles .menu-active and CSS handles visibility. */
+    /* For now, assuming .hidden is also removed by JS when .menu-active is added */
+}
+
+
+/* Dark Mode Toggle Styles - Commented Out
+.toggle-label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative; 
+}
+
+.toggle-switch {
+    width: 50px;
+    height: 26px;
+    background-color: #e5e7eb; 
+    border-radius: 9999px; 
+    padding: 3px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.dark .toggle-switch {
+    background-color: #4b5563; 
+}
+
+.toggle-ball {
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+
+.toggle-switch::before {
+    content: '☀️'; 
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: #f59e0b; 
+    opacity: 1; 
+    transition: opacity 0.3s ease;
+}
+
+.dark .toggle-switch::before {
+    opacity: 0; 
+}
+
+
+.toggle-switch::after {
+    content: '🌙'; 
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: #a5b4fc; 
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+}
+
+.dark .toggle-switch::after {
+    opacity: 1; 
+}
+
+#darkModeToggle:checked + .toggle-label .toggle-ball {
+    transform: translateX(24px);
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+*/
+
+
+/* Custom Dark Mode Body Styles - Commented out 
+html.dark body {
+    background-color: #111827 !important; 
+    color: #f9fafb !important; 
+}
+*/
+
+
+/* You might need to add more !important overrides for other elements 
+   if their Tailwind dark: variants are also not applying. */

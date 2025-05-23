@@ -10,11 +10,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <div id="free-trial-modal" class="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center z-50 hidden">
     <div id="modal-content" class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 text-center max-w-md mx-auto relative transform scale-90 opacity-0 transition-all duration-500 border border-gray-100 dark:border-gray-700">
-        <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+        <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 dark:hover:text-red-400 transition-colors">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
@@ -31,10 +32,10 @@
         </p>
 
         <div class="space-y-4">
-            <a href="#get-started" class="block w-full bg-green-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-green-700 transform hover:scale-105 transition-all duration-300">
+            <a href="#get-started" id="modal-join-button" class="block w-full cta-button text-base py-3">
                 Join
             </a>
-            <button id="close-modal-secondary" class="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors">
+            <button id="close-modal-secondary" class="text-sm text-gray-500 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-500 transition-colors font-medium">
                 No thanks, maybe later
             </button>
         </div>
@@ -50,6 +51,7 @@
                 Prepster
             </h1>
 
+            <!-- Desktop Navigation -->
             <nav class="hidden md:flex space-x-6 text-sm font-medium text-gray-800 dark:text-gray-200">
                 <a href="#features" class="hover:text-green-600">Features</a>
                 <a href="#about" class="hover:text-green-600">About</a>
@@ -57,25 +59,36 @@
                 <a href="#get-started" class="hover:text-green-600">Get Started</a>
             </nav>
 
-            <div class="hidden md:block">
-                <a href="#get-started" class="bg-green-600 text-white px-6 py-3 rounded text-sm font-medium hover:bg-green-700 transition">
-              Waitlist
-            </a>
-            </div>
+            <!-- Right side items: Toggle, Waitlist (Desktop), Burger (Mobile) -->
+            <div class="flex items-center space-x-3">
+                <!-- Dark Mode Toggle - Commented Out
+                <div class="flex items-center">
+                    <input type="checkbox" id="darkModeToggle" class="sr-only">
+                    <label for="darkModeToggle" class="toggle-label">
+                        <div class="toggle-switch">
+                            <div class="toggle-ball"></div>
+                        </div>
+                    </label>
+                </div>
+                -->
 
-            <button id="nav-toggle" class="md:hidden focus:outline-none text-gray-800 dark:text-gray-200">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
+                <!-- Waitlist Button (Desktop) -->
+                <div class="hidden md:block">
+                    <a href="#get-started" class="bg-green-600 text-white px-6 py-3 rounded text-sm font-medium hover:bg-green-700 transition">
+                        Waitlist
+                    </a>
+                </div>
+
+                <!-- Burger Menu Button (Mobile) -->
+                <button id="nav-toggle" class="md:hidden focus:outline-none text-gray-800 dark:text-gray-200 relative w-8 h-8">
+                    <span class="burger-line top-line"></span>
+                    <span class="burger-line middle-line"></span>
+                    <span class="burger-line bottom-line"></span>
+                </button>
+            </div>
         </div>
 
-        <nav id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+        <nav id="mobile-menu" class="md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
             <ul class="flex flex-col px-4 py-2 space-y-2 text-gray-800 dark:text-gray-200">
                 <li><a href="#features" class="block hover:text-green-600">Features</a></li>
                 <li><a href="#about" class="block hover:text-green-600">About</a></li>
@@ -83,22 +96,22 @@
                 <li><a href="#get-started" class="block hover:text-green-600">Get Started</a></li>
                 <li>
                     <a href="#get-started" class="block bg-green-600 text-white px-3 py-1 rounded text-xs font-medium hover:bg-green-700 transition text-center">
-                Waitlist
-              </a>
+                        Waitlist
+                    </a>
                 </li>
             </ul>
         </nav>
     </header>
 
-    <section id="hero" class="relative w-full min-h-screen flex items-center justify-center text-center bg-green-50 snap-start overflow-hidden">
+    <section id="hero" class="relative w-full min-h-screen flex items-center justify-center text-center bg-green-50 snap-start overflow-hidden pb-16">
         <canvas id="medicalCanvas" class="absolute top-0 left-0 w-full h-full z-0"></canvas>
 
-        <div class="relative z-10 px-4 sm:px-6 max-w-7xl mx-auto">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 sm:mb-6 max-w-3xl mx-auto text-black" style="font-family: 'Libre Baskerville', serif;">
+        <div class="relative z-10 px-4 sm:px-6 pt-20 md:pt-24 max-w-7xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold mb-4 sm:mb-6 max-w-3xl mx-auto text-black" style="font-family: 'Libre Baskerville', serif; line-height: 1.2;">
                 Your Personal Pre-Med AI
             </h2>
 
-            <p class="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-6 sm:mb-10 leading-relaxed">
+            <p class="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto mb-6 sm:mb-10 leading-relaxed">
                 Let AI guide your pre-med journey with personalized study plans, MCAT strategies, and curated opportunities. Your path to medical school, optimized and simplified.
             </p>
 
@@ -106,7 +119,7 @@
                 <a href="#get-started" class="w-full sm:w-auto cta-button">
                     Get Started
                 </a>
-                <a href="#ai-mvp" class="w-full sm:w-auto border-2 border-green-600 text-green-600 px-6 py-3 rounded-full text-sm font-semibold hover:bg-green-50 transition-all transform hover:scale-105">
+                <a href="#ai-mvp" class="w-full sm:w-auto secondary-button">
                     Learn More
                 </a>
             </div>
@@ -144,17 +157,17 @@
             <div class="flex flex-col lg:flex-row items-center lg:items-center gap-8 lg:gap-12">
 
                 <div class="w-full lg:w-1/2 space-y-6 text-center lg:text-left">
-                    <h3 class="text-2xl sm:text-3xl font-bold text-gray-900">
+                    <h3 class="section-title-enhanced text-left text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
                         AI-Integrated MVP
                     </h3>
-                    <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto lg:mx-0">
+                    <p class="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto lg:mx-0">
                         Our AI analyzes your unique profile, interests, and location to deliver hyper-personalized recommendations. Get matched with research labs and professors doing work you're passionate about, find shadowing opportunities with physicians in your specialty
                         of interest, and discover summer programs aligned with your goals. We combine AAMC guidelines, successful applicant data, and premed advisor expertise to create an adaptive roadmap that evolves with you - from customized MCAT study
                         strategies to clinical experience suggestions that fit your schedule.
                     </p>
                     <div class="py-8 sm:py-12">
                         <button id="show-roadmap-btn" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-medium transition-all transform hover:scale-105 text-sm sm:text-base">
-                          Generate Sample Roadmap
+                            Generate Sample Roadmap
                         </button>
                     </div>
                 </div>
@@ -174,16 +187,16 @@
             <p class="text-lg font-semibold mb-2">
                 Dream School:
             </p>
-            <h3 class="text-2xl md:text-3xl font-bold mb-6" style="color: #8C1515;">
+            <h3 class="text-xl sm:text-2xl md:text-3xl font-bold mb-6" style="color: #8C1515;">
                 Stanford University
             </h3>
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-gray-900 text-center gradient-text">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 text-gray-900 text-center gradient-text">
                 Curated 4-Year Pre-Med Journey
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12" id="roadmap-cards-container">
-                <div class="roadmap-card bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-md">
-                    <h3 class="text-2xl font-bold mb-6 text-gray-800 text-center">1st Year Goals</h3>
-                    <ul class="space-y-6 text-gray-700 text-base">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12" id="roadmap-cards-container">
+                <div class="roadmap-card bg-gray-50 border border-gray-200 rounded-2xl p-6 md:p-8 shadow-md">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-6 text-gray-800 text-center">1st Year Goals</h3>
+                    <ul class="space-y-4 sm:space-y-6 text-gray-700 text-sm sm:text-base">
                         <li>
                             📋 <strong>300 Clinical Hours</strong>
                             <details class="mt-2">
@@ -223,9 +236,9 @@
                     </ul>
                 </div>
 
-                <div class="roadmap-card bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-md">
-                    <h3 class="text-2xl font-bold mb-6 text-gray-800 text-center">2nd Year Goals</h3>
-                    <ul class="space-y-6 text-gray-700 text-base">
+                <div class="roadmap-card bg-gray-50 border border-gray-200 rounded-2xl p-6 md:p-8 shadow-md">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-6 text-gray-800 text-center">2nd Year Goals</h3>
+                    <ul class="space-y-4 sm:space-y-6 text-gray-700 text-sm sm:text-base">
                         <li>
                             📋 <strong>Leadership Roles</strong>
                             <details class="mt-2">
@@ -256,9 +269,9 @@
                     </ul>
                 </div>
 
-                <div class="roadmap-card bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-md">
-                    <h3 class="text-2xl font-bold mb-6 text-gray-800 text-center">3rd Year Goals</h3>
-                    <ul class="space-y-6 text-gray-700 text-base">
+                <div class="roadmap-card bg-gray-50 border border-gray-200 rounded-2xl p-6 md:p-8 shadow-md">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-6 text-gray-800 text-center">3rd Year Goals</h3>
+                    <ul class="space-y-4 sm:space-y-6 text-gray-700 text-sm sm:text-base">
                         <li>
                             📋 <strong>Take the MCAT</strong>
                             <details class="mt-2">
@@ -289,9 +302,9 @@
                     </ul>
                 </div>
 
-                <div class="roadmap-card bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-md">
-                    <h3 class="text-2xl font-bold mb-6 text-gray-800 text-center">4th Year Goals</h3>
-                    <ul class="space-y-6 text-gray-700 text-base">
+                <div class="roadmap-card bg-gray-50 border border-gray-200 rounded-2xl p-6 md:p-8 shadow-md">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-6 text-gray-800 text-center">4th Year Goals</h3>
+                    <ul class="space-y-4 sm:space-y-6 text-gray-700 text-sm sm:text-base">
                         <li>
                             📋 <strong>Submit Secondaries</strong>
                             <details class="mt-2">
@@ -324,139 +337,149 @@
             </div>
             <div class="text-center mt-12">
                 <button id="hide-roadmap-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-5 py-2 rounded-full font-medium">
-                  ← Back
+                    ← Back
                 </button>
             </div>
         </div>
     </section>
 
-    <section id="features" class="h-1/3 bg-gray-200 flex items-center justify-center snap-start">
-        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div>
-                <h3 class="text-xl font-semibold mb-2">Pre-Med Cheat Sheet</h3>
-                <p>Select your target medical schools and instantly access key admissions data including average GPA/MCAT scores, expected clinical hours, research requirements, and prerequisite courses. Get insider tips from successful applicants and customize
-                    your pre-med journey with school-specific requirements and application strategies.</p>
-            </div>
-            <div>
-                <h3 class="text-xl font-semibold mb-2">Personalized Roadmap</h3>
-                <p>Track your pre-med journey with smart progress tracking, automated reminders, and a dynamic dashboard that monitors your classes, clinical hours, and milestones. Your roadmap automatically updates based on your target med schools' prerequisites.</p>
-            </div>
-            <div>
-                <h3 class="text-xl font-semibold mb-2">Smart MCAT Planner</h3>
-                <p>Input your target MCAT date and get personalized weekly study goals, curated resource links, Anki deck recommendations, and dynamic study calendars. Our AI adapts your plan based on your progress and keeps you accountable with smart reminders
-                    and progress tracking.</p>
+    <section id="features" class="py-12 sm:py-16 bg-gray-200 dark:bg-gray-800 flex items-center justify-center snap-start min-h-[auto]">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="section-title-enhanced text-center text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-8 md:mb-10">Key Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 text-center">
+                <div class="bg-gray-200 dark:bg-gray-800 p-4 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Pre-Med Cheat Sheet</h3>
+                    <p class="text-base text-gray-600 dark:text-gray-400">Select your target medical schools and instantly access key admissions data including average GPA/MCAT scores, expected clinical hours, research requirements, and prerequisite courses. Get insider tips from successful applicants and
+                        customize your pre-med journey with school-specific requirements and application strategies.</p>
+                </div>
+                <div class="bg-gray-200 dark:bg-gray-800 p-4 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Personalized Roadmap</h3>
+                    <p class="text-base text-gray-600 dark:text-gray-400">Track your pre-med journey with smart progress tracking, automated reminders, and a dynamic dashboard that monitors your classes, clinical hours, and milestones. Your roadmap automatically updates based on your target med schools'
+                        prerequisites.
+                    </p>
+                </div>
+                <div class="bg-gray-200 dark:bg-gray-800 p-4 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Smart MCAT Planner</h3>
+                    <p class="text-base text-gray-600 dark:text-gray-400">Input your target MCAT date and get personalized weekly study goals, curated resource links, Anki deck recommendations, and dynamic study calendars. Our AI adapts your plan based on your progress and keeps you accountable with smart
+                        reminders and progress tracking.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="h-1/3 bg-gray-50 flex items-center justify-center snap-start">
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-4">About Us</h2>
-            <p class="mb-4 max-w-3xl mx-auto">As premed students and aspiring medical professionals, we intimately understand the challenges of this journey. We created this platform to help fellow premeds succeed, especially those who are passionate about medicine but need guidance navigating
+    <section id="about" class="py-16 sm:py-20 md:py-24 bg-gray-50 dark:bg-gray-850 flex items-center justify-center snap-start min-h-[33vh]">
+        <div class="container mx-auto text-center px-4 sm:px-6">
+            <h2 class="section-title-enhanced text-center text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-8">
+                About Us
+            </h2>
+            <p class="mb-4 max-w-3xl mx-auto text-gray-700 dark:text-gray-300 text-lg sm:text-xl">As premed students and aspiring medical professionals, we intimately understand the challenges of this journey. We created this platform to help fellow premeds succeed, especially those who are passionate about medicine but need guidance navigating
                 the complex path to medical school. Our mission is to provide consolidated, actionable resources that make the pre-med journey clearer and more achievable. Our team of successful medical school students and experienced advisors understands
                 that every pre-med journey is unique, which is why we've built an adaptive platform that evolves with your needs and goals.</p>
         </div>
     </section>
 
-    <section id="testimonials" class="min-h-1/3 py-20 bg-white text-center overflow-hidden relative">
-        <h2 class="text-4xl font-bold mb-10">Testimonials</h2>
+    <section id="testimonials" class="min-h-1/3 py-16 sm:py-20 bg-white dark:bg-gray-900 text-center overflow-hidden relative">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="section-title-enhanced text-center text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-12 md:mb-16">
+                What Pre-Meds Want
+            </h2>
+            <div class="slider">
+                <div class="slide-track">
+                    <div class="slide">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"I wish I had a tool that could tell me exactly what clinical experiences would be most valuable for my specific interests in pediatrics. There are so many options and I don't know what to prioritize."</p>
+                            <p class="testimonial-name">— Sarah, Pre-Med Sophomore</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"Between classes, research, and volunteering, I'm struggling to create a balanced MCAT study schedule. I need something that can adapt when life gets busy and help me stay on track."</p>
+                            <p class="testimonial-name">— Michael, Pre-Med Junior</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"As a first-gen student, I feel lost navigating the pre-med requirements. Having a personalized guide that breaks down exactly what I need for my target schools would be life-changing."</p>
+                            <p class="testimonial-name">— Maria, First-Year Pre-Med</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"I'm working part-time while doing pre-med. I need help finding research and clinical opportunities that fit my limited availability. Most pre-med advice assumes you have unlimited time."</p>
+                            <p class="testimonial-name">— Jason, International Student</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"There's so much conflicting advice online about what med schools want. I need clear, personalized guidance on which experiences will actually strengthen my specific application."</p>
+                            <p class="testimonial-name">— Emma, Pre-Med Junior</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"My school's pre-med advisor is overwhelmed with students. Having an AI advisor available 24/7 to answer questions and review my progress would help me feel more confident."</p>
+                            <p class="testimonial-name">— Alex, Pre-Med Sophomore</p>
+                        </div>
+                    </div>
 
-        <div class="slider">
-            <div class="slide-track">
-                <div class="slide">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"The AI analyzed my profile and created a personalized MCAT study schedule that perfectly balanced my coursework. I improved my score by 8 points!"</p>
-                        <p class="testimonial-name">— Emily Chen, UCSD Med '26</p>
+                    <!-- Duplicates-->
+                    <div class="slide">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"I wish I had a tool that could tell me exactly what clinical experiences would be most valuable for my specific interests in pediatrics. There are so many options and I don't know what to prioritize."</p>
+                            <p class="testimonial-name">— Sarah, Pre-Med Sophomore</p>
+                        </div>
                     </div>
-                </div>
-                <div class="slide">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Prepster's AI found research opportunities that perfectly matched my interests. Now I'm working in a neuroscience lab I love."</p>
-                        <p class="testimonial-name">— James Wilson, Pre-Med Junior</p>
+                    <div class="slide">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"Between classes, research, and volunteering, I'm struggling to create a balanced MCAT study schedule. I need something that can adapt when life gets busy and help me stay on track."</p>
+                            <p class="testimonial-name">— Michael, Pre-Med Junior</p>
+                        </div>
                     </div>
-                </div>
-                <div class="slide">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"The AI advisor helped me choose the perfect extracurriculars and tracked my clinical hours. Made my med school application so much stronger!"</p>
-                        <p class="testimonial-name">— Sofia Rodriguez, UCLA Med '25</p>
+                    <div class="slide">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"As a first-gen student, I feel lost navigating the pre-med requirements. Having a personalized guide that breaks down exactly what I need for my target schools would be life-changing."</p>
+                            <p class="testimonial-name">— Maria, First-Year Pre-Med</p>
+                        </div>
                     </div>
-                </div>
-                <div class="slide">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Having an AI analyze my application and suggest improvements was invaluable. It caught weaknesses I never would have noticed."</p>
-                        <p class="testimonial-name">— David Park, Pre-Med Senior</p>
+                    <div class="slide">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"I'm working part-time while doing pre-med. I need help finding research and clinical opportunities that fit my limited availability. Most pre-med advice assumes you have unlimited time."</p>
+                            <p class="testimonial-name">— Jason, International Student</p>
+                        </div>
                     </div>
-                </div>
-                <div class="slide">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"The personalized timeline kept me on track with deadlines and requirements. No more stress about missing important dates!"</p>
-                        <p class="testimonial-name">— Priya Patel, UCSD Med '26</p>
+                    <div class="slide">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"There's so much conflicting advice online about what med schools want. I need clear, personalized guidance on which experiences will actually strengthen my specific application."</p>
+                            <p class="testimonial-name">— Emma, Pre-Med Junior</p>
+                        </div>
                     </div>
-                </div>
-                <div class="slide">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"As a non-traditional applicant, I was lost until Prepster's AI created a custom roadmap for my situation. Now I'm heading to med school!"</p>
-                        <p class="testimonial-name">— Marcus Thompson, Career Changer</p>
-                    </div>
-                </div>
-
-                <!-- Duplicates-->
-                <div class="slide">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"The AI analyzed my profile and created a personalized MCAT study schedule that perfectly balanced my coursework. I improved my score by 8 points!"</p>
-                        <p class="testimonial-name">— Emily Chen, UCSD Med '26</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Prepster's AI found research opportunities that perfectly matched my interests. Now I'm working in a neuroscience lab I love."</p>
-                        <p class="testimonial-name">— James Wilson, Pre-Med Junior</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"The AI advisor helped me choose the perfect extracurriculars and tracked my clinical hours. Made my med school application so much stronger!"</p>
-                        <p class="testimonial-name">— Sofia Rodriguez, UCLA Med '25</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Having an AI analyze my application and suggest improvements was invaluable. It caught weaknesses I never would have noticed."</p>
-                        <p class="testimonial-name">— David Park, Pre-Med Senior</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"The personalized timeline kept me on track with deadlines and requirements. No more stress about missing important dates!"</p>
-                        <p class="testimonial-name">— Priya Patel, UCSD Med '26</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"As a non-traditional applicant, I was lost until Prepster's AI created a custom roadmap for my situation. Now I'm heading to med school!"</p>
-                        <p class="testimonial-name">— Marcus Thompson, Career Changer</p>
+                    <div class="slide">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"My school's pre-med advisor is overwhelmed with students. Having an AI advisor available 24/7 to answer questions and review my progress would help me feel more confident."</p>
+                            <p class="testimonial-name">— Alex, Pre-Med Sophomore</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="get-started" class="bg-green-600 flex items-center justify-center px-4 py-16">
-        <div class="bg-white rounded-2xl shadow-2xl p-8 sm:p-12 md:p-16 w-full max-w-2xl">
-            <h2 class="text-3xl md:text-4xl font-extrabold mb-6 text-center text-gray-900">
+    <section id="get-started" class="bg-green-600 flex items-center justify-center px-4 py-12 md:py-16">
+        <div class="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 md:p-12 lg:p-16 w-full max-w-2xl">
+            <h2 class="section-title-enhanced text-center text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white mb-6 md:mb-8">
                 Join the Waitlist
             </h2>
-            <p class="text-gray-600 text-center mb-8 text-base md:text-lg">
+            <p class="text-gray-600 dark:text-gray-300 text-center mb-6 md:mb-8 text-base sm:text-lg">
                 Be the first to know when Prepster launches.
             </p>
 
-            <form id="waitlistForm" action="https://formspree.io/f/mvgazqej" method="POST" class="space-y-6">
-                <input type="text" name="full_name" placeholder="Full Name" required class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-lg">
-                <input type="email" name="email" placeholder="Email Address" required class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-lg">
-                <input type="text" name="year" placeholder="Current Year (e.g., Sophomore, Gap Year)" class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-lg">
-                <button type="submit" class="w-full cta-button py-4 text-lg">
-              Join
-            </button>
+            <form id="waitlistForm" action="https://formspree.io/f/mvgazqej" method="POST" class="space-y-4 md:space-y-6">
+                <input type="text" name="full_name" placeholder="Full Name" required class="w-full px-5 py-3 sm:px-6 sm:py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-base sm:text-lg">
+                <input type="email" name="email" placeholder="Email Address" required class="w-full px-5 py-3 sm:px-6 sm:py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-base sm:text-lg">
+                <input type="text" name="year" placeholder="Current Year (e.g., Sophomore, Gap Year)" class="w-full px-5 py-3 sm:px-6 sm:py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-base sm:text-lg">
+                <button type="submit" class="w-full cta-button py-3 sm:py-4 text-base sm:text-lg">
+                    Join
+                </button>
             </form>
 
             <p class="text-sm text-gray-400 text-center mt-6">No spam — only exciting updates.</p>
