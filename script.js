@@ -280,3 +280,83 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 */
+
+// Scrollspy for Navbar Highlight
+document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll("header nav a[href^='#']"); // Target links in header nav
+    const mobileNavLinks = document.querySelectorAll("#mobile-menu a[href^='#']");
+
+    console.log("Sections found:", sections.length, sections);
+    console.log("Desktop NavLinks found:", navLinks.length, navLinks);
+    console.log("Mobile NavLinks found:", mobileNavLinks.length, mobileNavLinks);
+
+    if (!sections.length || (!navLinks.length && !mobileNavLinks.length)) {
+        console.log("Scrollspy: No sections or nav links to observe. Exiting.");
+        return; // No sections or nav links to observe
+    }
+
+    const activateNavLinks = (currentSectionId) => {
+        navLinks.forEach(link => {
+            link.classList.remove("text-green-600", "font-bold", "dark:text-green-400");
+            const linkHref = link.getAttribute("href");
+            // console.log(`Desktop link: ${linkHref}, Current section: #${currentSectionId}`); // Optional: very verbose
+            if (linkHref === `#${currentSectionId}`) {
+                console.log(`Activating desktop link: ${linkHref}`);
+                link.classList.add("text-green-600", "font-bold", "dark:text-green-400");
+            }
+        });
+        mobileNavLinks.forEach(link => {
+            link.classList.remove("text-green-600", "font-bold", "dark:text-green-400");
+            const linkHref = link.getAttribute("href");
+            // console.log(`Mobile link: ${linkHref}, Current section: #${currentSectionId}`); // Optional: very verbose
+            if (linkHref === `#${currentSectionId}`) {
+                console.log(`Activating mobile link: ${linkHref}`);
+                link.classList.add("text-green-600", "font-bold", "dark:text-green-400");
+            }
+        });
+    };
+
+    const onScroll = () => {
+        const scrollPosition = window.pageYOffset;
+        const headerOffset = 90; // Adjust this based on your fixed header's height
+        let newCurrentSectionId = "";
+
+        // Iterate through sections to find the current one
+        for (let i = 0; i < sections.length; i++) {
+            const section = sections[i];
+            // Only consider the section if it's a <SECTION> tag and is currently visible
+            if (section.tagName === 'SECTION' && section.offsetParent !== null) {
+                const sectionTop = section.offsetTop - headerOffset;
+
+                if (scrollPosition >= sectionTop) {
+                    newCurrentSectionId = section.id;
+                } else {
+                    // If we've passed the section that should be current, stop.
+                    // This handles cases where sections are taller than the viewport.
+                    break;
+                }
+            }
+        }
+
+        // If after checking all sections, newCurrentSectionId is still empty
+        // (e.g., scrolled above the first section), try to set it to the first section if visible.
+        if (newCurrentSectionId === "" && sections.length > 0 && sections[0].tagName === 'SECTION') {
+            // Check if the top of the first section is visible or nearly visible
+            // and ensure the first section itself is visible
+            if (sections[0].offsetParent !== null && scrollPosition < (sections[0].offsetTop - headerOffset + sections[0].offsetHeight)) {
+                // newCurrentSectionId = sections[0].id; // Optionally highlight first section if scrolled to top
+                // For now, let's leave it blank if truly above all sections (or set to hero by default if scrollY is 0)
+                if (scrollPosition === 0 && sections[0].id === 'hero') {
+                    newCurrentSectionId = 'hero';
+                }
+            }
+        }
+
+        console.log("Current active section ID:", newCurrentSectionId, "ScrollY:", scrollPosition);
+        activateNavLinks(newCurrentSectionId);
+    };
+
+    window.addEventListener("scroll", onScroll);
+    onScroll(); // Call on load to set initial state
+});
