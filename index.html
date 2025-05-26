@@ -60,6 +60,7 @@
                 <a href="#ai-mvp" class="hover:text-green-600">Our AI</a>
                 <a href="#features" class="hover:text-green-600">Features</a>
                 <a href="#testimonials" class="hover:text-green-600">Testimonials</a>
+                <a href="#faq" class="hover:text-green-600">FAQ</a>
                 <a href="#about" class="hover:text-green-600">About</a>
                 <a href="#get-started" class="hover:text-green-600">Get Started</a>
             </nav>
@@ -98,6 +99,7 @@
                 <li><a href="#ai-mvp" class="block hover:text-green-600">Our AI</a></li>
                 <li><a href="#features" class="block hover:text-green-600">Features</a></li>
                 <li><a href="#testimonials" class="block hover:text-green-600">Testimonials</a></li>
+                <li><a href="#faq" class="block hover:text-green-600">FAQ</a></li>
                 <li><a href="#about" class="block hover:text-green-600">About</a></li>
                 <li><a href="#get-started" class="block hover:text-green-600">Get Started</a></li>
                 <li>
@@ -455,7 +457,67 @@
         </div>
     </section>
 
-    <section id="about" class="py-16 sm:py-20 md:py-24 bg-gray-50 dark:bg-gray-850 flex items-center justify-center snap-start min-h-[33vh]">
+    <section id="faq" class="faq-section py-12 sm:py-16 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 max-w-4xl">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
+                    Frequently Asked <span class="gradient-text">Questions</span>
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Everything you need to know about PrepsterAI and how it can help you succeed in your pre-med journey.
+                </p>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="mb-8">
+                <div class="relative max-w-md mx-auto">
+                    <input type="text" id="searchInput" placeholder="Search questions..." class="search-input w-full px-6 py-4 rounded-2xl text-gray-700 placeholder-gray-500 focus:outline-none text-base">
+                    <div class="absolute right-4 top-1/2 transform -translate-y-1/2">
+                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="flex flex-wrap justify-center gap-3 mb-4">
+                <button class="category-filter active px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium text-sm" data-category="all">
+                    All Questions
+                </button>
+                <button class="category-filter px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium text-sm" data-category="general">
+                    General
+                </button>
+                <button class="category-filter px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium text-sm" data-category="features">
+                    Features
+                </button>
+                <button class="category-filter px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium text-sm" data-category="pricing">
+                    Pricing
+                </button>
+                <button class="category-filter px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium text-sm" data-category="mcat">
+                    MCAT
+                </button>
+                <button class="category-filter px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium text-sm" data-category="application">
+                    Applications
+                </button>
+            </div>
+
+            <!-- FAQ Items -->
+            <div id="faqContainer" class="space-y-4">
+                <!-- FAQ items will be inserted here by JavaScript -->
+            </div>
+
+            <!-- No Results Message -->
+            <div id="noResults" class="no-results hidden text-center py-12">
+                <div class="text-6xl mb-4">🔍</div>
+                <h3 class="text-xl font-semibold text-black mb-2">No questions found</h3>
+                <p class="text-black">Try adjusting your search or browse different categories.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-16 sm:py-20 md:py-24 bg-white dark:bg-gray-850 flex items-center justify-center snap-start min-h-[33vh]">
         <div class="container mx-auto text-center px-4 sm:px-6">
             <h2 class="section-title-enhanced text-center text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-8">
                 About Us
@@ -498,7 +560,7 @@
     <script src="script.js"></script>
 
     <a href="#get-started" class="fixed bottom-6 right-6 z-50 bg-green-600 text-white px-6 py-3 rounded-full shadow-lg cta-button block md:hidden transition hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
-        Join Waitlist
+        Get Started
     </a>
 </body>
 
