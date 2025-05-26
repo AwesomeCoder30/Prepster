@@ -1,3 +1,4 @@
+/* First DOMContentLoaded block - Temporarily Commented Out
 document.addEventListener("DOMContentLoaded", () => {
     const fadeInElements = document.querySelectorAll(".fade-in");
     const observer = new IntersectionObserver((entries) => {
@@ -59,7 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+*/
 
+/* Canvas Animation DOMContentLoaded block - Temporarily Commented Out
 document.addEventListener("DOMContentLoaded", () => {
     const canvas = document.getElementById("medicalCanvas");
     const ctx = canvas.getContext("2d");
@@ -124,36 +127,76 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     animate();
 });
+*/
 
+// Modal Logic DOMContentLoaded block - THIS IS THE ONE WE ARE TESTING
 document.addEventListener("DOMContentLoaded", () => {
+    console.log("MODAL SCRIPT BLOCK EXECUTING"); // VERY FIRST LINE FOR TESTING
+
     const modal = document.getElementById("free-trial-modal");
     const modalContent = document.getElementById("modal-content");
     const closeModal = document.getElementById("close-modal");
     const closeModalSecondary = document.getElementById("close-modal-secondary");
+    const modalJoinButton = document.getElementById("modal-join-button");
 
-    setTimeout(() => {
-        modal.classList.remove("hidden");
-        setTimeout(() => {
-            modalContent.classList.remove("scale-90", "opacity-0");
-            modalContent.classList.add("scale-100", "opacity-100");
-        }, 100);
-    }, 7000);
+    console.log("Attempting to find Modal Join Button. Element found:", modalJoinButton);
 
-    closeModal.addEventListener("click", () => {
-        modalContent.classList.add("scale-90", "opacity-0");
+    const hideModal = () => {
+        if (modalContent) {
+            modalContent.classList.add("scale-90", "opacity-0");
+        }
         setTimeout(() => {
-            modal.classList.add("hidden");
+            if (modal) {
+                modal.classList.add("hidden");
+            }
         }, 300);
-    });
+    };
 
-    closeModalSecondary.addEventListener("click", () => {
-        modalContent.classList.add("scale-90", "opacity-0");
+    if (modal) {
         setTimeout(() => {
-            modal.classList.add("hidden");
-        }, 300);
-    });
+            modal.classList.remove("hidden");
+            if (modalContent) {
+                setTimeout(() => {
+                    modalContent.classList.remove("scale-90", "opacity-0");
+                    modalContent.classList.add("scale-100", "opacity-100");
+                }, 100);
+            }
+        }, 7000);
+
+        if (closeModal) {
+            closeModal.addEventListener("click", hideModal);
+        }
+        if (closeModalSecondary) {
+            closeModalSecondary.addEventListener("click", hideModal);
+        }
+        if (modalJoinButton) {
+            console.log("Modal Join Button found and listener being attached.");
+            modalJoinButton.addEventListener("click", (event) => {
+                console.log("Modal Join Button clicked.");
+                event.preventDefault();
+                console.log("Default scroll prevented.");
+                hideModal();
+                console.log("hideModal() function called.");
+                const targetId = modalJoinButton.getAttribute('href');
+                console.log("Target ID for scroll:", targetId);
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    console.log("Target element for scroll found:", targetElement);
+                    setTimeout(() => {
+                        console.log("Executing scrollToView.");
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }, 150);
+                } else {
+                    console.error("Target element for scroll NOT found:", targetId);
+                }
+            });
+        } else {
+            console.error("ERROR: Modal Join Button with ID 'modal-join-button' was NOT found by getElementById.");
+        }
+    }
 });
 
+/* Testimonial Parallax Scroll - Temporarily Commented Out
 document.addEventListener("scroll", () => {
     const cards = document.querySelectorAll(".testimonial-card");
     cards.forEach(card => {
@@ -162,24 +205,48 @@ document.addEventListener("scroll", () => {
         card.style.setProperty('--scroll-amount', `${offset}px`);
     });
 });
+*/
 
+/* Scroll List Duplication - Temporarily Commented Out
 const scrollList = document.querySelector(".scroll-list");
-const items = Array.from(scrollList.children);
-
-window.addEventListener("load", () => {
-    items.forEach((item) => {
-        const clone = item.cloneNode(true);
-        clone.setAttribute("aria-hidden", "true");
-        scrollList.appendChild(clone);
+if (scrollList) { // Check if scrollList exists
+    const items = Array.from(scrollList.children);
+    window.addEventListener("load", () => {
+        items.forEach((item) => {
+            const clone = item.cloneNode(true);
+            clone.setAttribute("aria-hidden", "true");
+            scrollList.appendChild(clone);
+        });
     });
-});
+}
+*/
 
-document.getElementById('nav-toggle').addEventListener('click', function() {
-    const menu = document.getElementById('mobile-menu');
-    menu.classList.toggle('menu-active');
-    this.classList.toggle('active');
-});
+// Nav Toggle
+const navToggle = document.getElementById('nav-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
 
+if (navToggle && mobileMenu) {
+    navToggle.addEventListener('click', function() {
+        mobileMenu.classList.toggle('menu-active');
+        this.classList.toggle('active');
+    });
+
+    // Get all links within the mobile menu
+    const mobileMenuLinks = mobileMenu.querySelectorAll("a[href^='#']");
+
+    mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Only close if the menu is actually active
+            if (mobileMenu.classList.contains('menu-active')) {
+                mobileMenu.classList.remove('menu-active');
+                navToggle.classList.remove('active');
+            }
+            // Allow default anchor behavior to scroll to section
+        });
+    });
+}
+
+/* Roadmap Details & Show/Hide - Temporarily Commented Out
 document.addEventListener("DOMContentLoaded", () => {
     const detailsElements = document.querySelectorAll("#roadmap details");
     detailsElements.forEach(details => {
@@ -232,56 +299,9 @@ document.addEventListener("DOMContentLoaded", () => {
         cardObserver.observe(roadmapCardsContainer);
     }
 });
-
-/* Dark Mode Toggle Functionality - Commented Out
-document.addEventListener('DOMContentLoaded', () => {
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const htmlElement = document.documentElement;
-
-    // Function to apply the theme
-    const applyTheme = (theme) => {
-        if (theme === 'dark') {
-            htmlElement.classList.add('dark');
-            if(darkModeToggle) darkModeToggle.checked = true;
-        } else {
-            htmlElement.classList.remove('dark');
-            if(darkModeToggle) darkModeToggle.checked = false;
-        }
-    };
-
-    // Check for saved theme in localStorage and apply it
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        applyTheme(savedTheme);
-    } else {
-        // If no saved theme, check system preference
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        applyTheme(prefersDark ? 'dark' : 'light');
-    }
-
-    // Event listener for the toggle
-    if (darkModeToggle) {
-        darkModeToggle.addEventListener('change', () => {
-            if (darkModeToggle.checked) {
-                applyTheme('dark');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                applyTheme('light');
-                localStorage.setItem('theme', 'light');
-            }
-        });
-    }
-
-    // Listen for changes in system preference (optional, but good for UX)
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-        const newTheme = e.matches ? 'dark' : 'light';
-        applyTheme(newTheme);
-        localStorage.setItem('theme', newTheme); // Update localStorage as well
-    });
-});
 */
 
-// Scrollspy for Navbar Highlight
+// Scrollspy for Navbar Highlight (Keep this one active for now, as it was working)
 document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll("section[id]");
     const navLinks = document.querySelectorAll("header nav a[href^='#']"); // Target links in header nav
