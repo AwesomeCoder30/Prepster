@@ -43,22 +43,22 @@
                 Home › Dashboard
             </div>
             <button class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
-        New Roadmap
-      </button>
+                Edit Roadmap
+            </button>
         </div>
 
         <!-- Metric Cards -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="bg-white p-6 rounded-xl shadow">
-                <p class="text-sm text-gray-500">Total Roadmaps</p>
+                <p class="text-sm text-gray-500">Active Applications</p>
                 <h3 class="text-3xl font-bold">2</h3>
             </div>
             <div class="bg-white p-6 rounded-xl shadow">
-                <p class="text-sm text-gray-500">Avg. MCAT Score</p>
+                <p class="text-sm text-gray-500">Current Avg Practice MCAT Score</p>
                 <h3 class="text-3xl font-bold">512</h3>
             </div>
             <div class="bg-white p-6 rounded-xl shadow">
-                <p class="text-sm text-gray-500">Upcoming Deadline</p>
+                <p class="text-sm text-gray-500">Upcoming Ochem Test Date</p>
                 <h3 class="text-3xl font-bold">May 30, 2025</h3>
             </div>
         </div>
@@ -96,34 +96,90 @@
         <!-- Feature Panels -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-            <!-- Personalized Roadmap Preview -->
-            <div class="bg-white p-6 rounded-xl shadow">
-                <h4 class="font-bold text-xl mb-4">Personalized Roadmap Preview</h4>
-                <p class="text-gray-600 mb-4">
-                    See a snippet of your dynamic 4-year plan, tailored to your dream school (Stanford University).
-                </p>
-                <div class="h-48 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400">
-                    Roadmap Preview (placeholder)
+            <!-- Roadmap Progress Tracker Widget -->
+            <div class="bg-white p-6 rounded-xl shadow flex flex-col items-center">
+                <h4 class="font-bold text-xl mb-4">Roadmap Progress</h4>
+                <div class="w-full flex flex-col items-center">
+                    <!-- Progress Bar with Steps -->
+                    <div class="flex items-center justify-between w-full max-w-xl mb-6">
+                        <!-- Step 1: Shadowing -->
+                        <div class="flex flex-col items-center">
+                            <div class="bg-green-500 text-white rounded-full w-10 h-10 flex items-center justify-center mb-1 shadow"><svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 13l4 4L19 7' /></svg></div>
+                            <span class="text-xs font-semibold text-green-700">Shadowing</span>
+                        </div>
+                        <!-- Step 2: Research -->
+                        <div class="flex flex-col items-center">
+                            <div class="bg-green-500 text-white rounded-full w-10 h-10 flex items-center justify-center mb-1 shadow"><svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 13l4 4L19 7' /></svg></div>
+                            <span class="text-xs font-semibold text-green-700">Research</span>
+                        </div>
+                        <!-- Step 3: MCAT -->
+                        <div class="flex flex-col items-center">
+                            <div class="bg-yellow-400 text-white rounded-full w-10 h-10 flex items-center justify-center mb-1 shadow"><svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4l3 3' /></svg></div>
+                            <span class="text-xs font-semibold text-yellow-700">MCAT</span>
+                        </div>
+                        <!-- Step 4: Applications -->
+                        <div class="flex flex-col items-center">
+                            <div class="bg-gray-200 text-gray-400 rounded-full w-10 h-10 flex items-center justify-center mb-1 shadow"><svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 17v-6a2 2 0 012-2h2a2 2 0 012 2v6' /></svg></div>
+                            <span class="text-xs font-semibold text-gray-500">Applications</span>
+                        </div>
+                        <!-- Step 5: Interviews -->
+                        <div class="flex flex-col items-center">
+                            <div class="bg-gray-200 text-gray-400 rounded-full w-10 h-10 flex items-center justify-center mb-1 shadow"><svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 10h.01M12 10h.01M16 10h.01M9 16h6' /></svg></div>
+                            <span class="text-xs font-semibold text-gray-500">Interviews</span>
+                        </div>
+                    </div>
+                    <!-- Progress Bar -->
+                    <div class="relative w-full max-w-xl h-2 bg-gray-200 rounded-full mb-6">
+                        <div class="absolute left-0 top-0 h-2 bg-gradient-to-r from-green-400 to-yellow-400 rounded-full" style="width:60%"></div>
+                    </div>
+                    <div class="w-full flex justify-end">
+                        <a href="#" class="px-5 py-2 rounded-full bg-green-600 text-white font-semibold shadow hover:bg-green-700 transition">View Full Roadmap</a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Advisor Notes -->
-            <div class="bg-white p-6 rounded-xl shadow">
-                <h4 class="font-bold text-xl mb-4">Advisor Notes</h4>
-                <ul class="space-y-4 text-gray-700">
-                    <li>
-                        <p class="font-semibold">Dr. Smith</p>
-                        <p class="text-sm">“Consider adding more research hours in Year 2.”</p>
-                    </li>
-                    <li>
-                        <p class="font-semibold">Prof. Lee</p>
-                        <p class="text-sm">“Start MCAT content review sooner.”</p>
-                    </li>
-                    <li>
-                        <p class="font-semibold">Dr. Patel</p>
-                        <p class="text-sm">“Line up your letters of recommendation early.”</p>
-                    </li>
-                </ul>
+            <!-- Chances Block (Prepster Custom, improved layout) -->
+            <div class="bg-white/80 backdrop-blur rounded-2xl shadow-xl p-6 flex flex-col items-center relative overflow-hidden border border-green-100">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-2xl">🎯</span>
+                    <h4 class="font-bold text-xl tracking-tight">Prepster Chancing</h4>
+                    <span class="ml-2 px-3 py-1 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-700">Reach</span>
+                </div>
+                <div class="text-lg font-semibold text-gray-800 mb-1">UC Berkeley School of Medicine</div>
+                <div class="text-sm text-gray-500 mb-4">Premed Track</div>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-8 mb-4 w-full">
+                    <!-- Circular Gauge -->
+                    <div class="flex flex-col items-center">
+                        <svg width="100" height="100" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="40" stroke="#e5e7eb" stroke-width="12" fill="none"/>
+                    <circle cx="50" cy="50" r="40" stroke="url(#gaugeGradient)" stroke-width="12" fill="none"
+                      stroke-dasharray="251.2" stroke-dashoffset="148.2" stroke-linecap="round"/>
+                    <defs>
+                      <linearGradient id="gaugeGradient" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#10B981"/>
+                        <stop offset="1" stop-color="#3b82f6"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                        <div class="mt-2 text-3xl font-extrabold text-green-700">41%</div>
+                        <div class="text-sm text-gray-500">Your Chance</div>
+                    </div>
+                    <div class="flex flex-col gap-4 sm:items-start items-center">
+                        <div>
+                            <span class="text-xs text-gray-400">Avg. Accepted GPA</span>
+                            <div class="font-semibold text-gray-700 text-lg">3.85</div>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-400">Avg. MCAT</span>
+                            <div class="font-semibold text-gray-700 text-lg">517</div>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-400">Acceptance Rate</span>
+                            <div class="font-semibold text-gray-700 text-lg">14%</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="mt-2 px-6 py-3 rounded-full bg-green-600 text-white font-semibold shadow hover:bg-green-700 transition text-lg">See how to improve</a>
             </div>
 
         </div>

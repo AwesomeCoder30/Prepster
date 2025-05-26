@@ -248,7 +248,7 @@ body {
     --clr-slide-7: #f97316;
     --item-height: 60px;
     --total-items: 7;
-    --animation-duration: 15s;
+    --animation-duration: 10s;
     --scroll-height: 300px;
 }
 
@@ -607,8 +607,7 @@ body {
 
 .section-title-enhanced {
     position: relative;
-    display: inline-block;
-    /* Or block if it should take full width before centering text */
+    display: block;
     padding-bottom: 0.75rem;
     margin-bottom: 1.5rem;
     /* Default, adjust as needed */
