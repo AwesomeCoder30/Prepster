@@ -1,4 +1,3 @@
-/* First DOMContentLoaded block - Temporarily Commented Out
 document.addEventListener("DOMContentLoaded", () => {
     const fadeInElements = document.querySelectorAll(".fade-in");
     const observer = new IntersectionObserver((entries) => {
@@ -60,9 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-*/
 
-/* Canvas Animation DOMContentLoaded block - Temporarily Commented Out
 document.addEventListener("DOMContentLoaded", () => {
     const canvas = document.getElementById("medicalCanvas");
     const ctx = canvas.getContext("2d");
@@ -127,7 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     animate();
 });
-*/
 
 // Modal Logic DOMContentLoaded block - THIS IS THE ONE WE ARE TESTING
 document.addEventListener("DOMContentLoaded", () => {
@@ -196,7 +192,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-/* Testimonial Parallax Scroll - Temporarily Commented Out
 document.addEventListener("scroll", () => {
     const cards = document.querySelectorAll(".testimonial-card");
     cards.forEach(card => {
@@ -205,12 +200,12 @@ document.addEventListener("scroll", () => {
         card.style.setProperty('--scroll-amount', `${offset}px`);
     });
 });
-*/
 
-/* Scroll List Duplication - Temporarily Commented Out
+// Scroll List Duplication
 const scrollList = document.querySelector(".scroll-list");
 if (scrollList) { // Check if scrollList exists
     const items = Array.from(scrollList.children);
+    // Ensure this runs after the DOM is ready and images (if any) are loaded for proper height calculation if needed, though here it's mainly for DOM manipulation.
     window.addEventListener("load", () => {
         items.forEach((item) => {
             const clone = item.cloneNode(true);
@@ -219,7 +214,6 @@ if (scrollList) { // Check if scrollList exists
         });
     });
 }
-*/
 
 // Nav Toggle
 const navToggle = document.getElementById('nav-toggle');
@@ -245,61 +239,6 @@ if (navToggle && mobileMenu) {
         });
     });
 }
-
-/* Roadmap Details & Show/Hide - Temporarily Commented Out
-document.addEventListener("DOMContentLoaded", () => {
-    const detailsElements = document.querySelectorAll("#roadmap details");
-    detailsElements.forEach(details => {
-        details.addEventListener("toggle", () => {
-            if (details.open) {
-                details.classList.add("open");
-            } else {
-                details.classList.remove("open");
-            }
-        });
-    });
-
-    const aiSection = document.getElementById("ai-mvp");
-    const roadmapSection = document.getElementById("roadmap");
-    const showBtn = document.getElementById("show-roadmap-btn");
-    const hideBtn = document.getElementById("hide-roadmap-btn");
-
-    showBtn.addEventListener("click", () => {
-        aiSection.classList.add("hidden");
-        roadmapSection.classList.remove("hidden");
-        roadmapSection.scrollIntoView({ behavior: "smooth" });
-    });
-
-    hideBtn.addEventListener("click", () => {
-        roadmapSection.classList.add("hidden");
-        aiSection.classList.remove("hidden");
-        aiSection.scrollIntoView({ behavior: "smooth" });
-    });
-
-    // Staggered animation for roadmap cards
-    const roadmapCardsContainer = document.getElementById("roadmap-cards-container");
-    if (roadmapCardsContainer) {
-        const cardObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const cards = roadmapCardsContainer.querySelectorAll(".roadmap-card");
-                    cards.forEach((card, index) => {
-                        // The CSS handles the delay based on :nth-child, 
-                        // but if we wanted JS-based delay, it would be here:
-                        // setTimeout(() => {
-                        // card.classList.add("is-visible");
-                        // }, index * 200); // 200ms delay between cards
-                        card.classList.add("is-visible");
-                    });
-                    observer.unobserve(roadmapCardsContainer); // Stop observing after triggering once
-                }
-            });
-        }, { threshold: 0.2 }); // Trigger when 20% of the container is visible
-
-        cardObserver.observe(roadmapCardsContainer);
-    }
-});
-*/
 
 // Scrollspy for Navbar Highlight (Keep this one active for now, as it was working)
 document.addEventListener("DOMContentLoaded", () => {
@@ -379,4 +318,60 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("scroll", onScroll);
     onScroll(); // Call on load to set initial state
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const detailsElements = document.querySelectorAll("#roadmap details");
+    detailsElements.forEach(details => {
+        details.addEventListener("toggle", () => {
+            if (details.open) {
+                details.classList.add("open");
+            } else {
+                details.classList.remove("open");
+            }
+        });
+    });
+
+    const aiSection = document.getElementById("ai-mvp");
+    const roadmapSection = document.getElementById("roadmap");
+    const showBtn = document.getElementById("show-roadmap-btn");
+    const hideBtn = document.getElementById("hide-roadmap-btn");
+
+    // Add null checks for robustness, in case these elements don't exist on a page
+    if (aiSection && roadmapSection && showBtn && hideBtn) {
+        showBtn.addEventListener("click", () => {
+            aiSection.classList.add("hidden");
+            roadmapSection.classList.remove("hidden");
+            roadmapSection.scrollIntoView({ behavior: "smooth" });
+        });
+
+        hideBtn.addEventListener("click", () => {
+            roadmapSection.classList.add("hidden");
+            aiSection.classList.remove("hidden");
+            aiSection.scrollIntoView({ behavior: "smooth" });
+        });
+    }
+
+    // Staggered animation for roadmap cards
+    const roadmapCardsContainer = document.getElementById("roadmap-cards-container");
+    if (roadmapCardsContainer) {
+        const cardObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const cards = roadmapCardsContainer.querySelectorAll(".roadmap-card");
+                    cards.forEach((card, index) => {
+                        // The CSS handles the delay based on :nth-child, 
+                        // but if we wanted JS-based delay, it would be here:
+                        // setTimeout(() => {
+                        // card.classList.add("is-visible");
+                        // }, index * 200); // 200ms delay between cards
+                        card.classList.add("is-visible");
+                    });
+                    observer.unobserve(roadmapCardsContainer); // Stop observing after triggering once
+                }
+            });
+        }, { threshold: 0.2 }); // Trigger when 20% of the container is visible
+
+        cardObserver.observe(roadmapCardsContainer);
+    }
 });
