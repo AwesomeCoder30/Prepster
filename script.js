@@ -571,9 +571,15 @@ function toggleFAQ(index) {
 
 // Show/Hide No Results - Fixed functions
 function showNoResults() {
+    console.log('Showing no results message');
     faqContainer.innerHTML = '';
-    noResults.classList.remove('hidden');
-    noResults.style.display = 'block';
+    const noResultsEl = document.getElementById('noResults');
+    if (noResultsEl) {
+        noResultsEl.classList.remove('hidden');
+        noResultsEl.style.display = 'block';
+        noResultsEl.style.visibility = 'visible';
+        noResultsEl.style.opacity = '1';
+    }
 }
 
 function hideNoResults() {
