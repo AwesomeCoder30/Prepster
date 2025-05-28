@@ -589,3 +589,30 @@ function hideNoResults() {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', initializeFAQ);
+
+// Supabase waitlist form submission
+const supabase = window.supabase.createClient(
+    'https://dldcwmgyffkzslbmddva.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRsZGN3bWd5ZmZrenNsYm1kZHZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzOTAzODgsImV4cCI6MjA2Mzk2NjM4OH0.dXv57u4pSbWoNioKV45aNpfGMBGS0txZPcWMi3DOLTU'
+);
+
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('waitlistForm');
+    if (form) {
+        form.addEventListener('submit', async(e) => {
+            e.preventDefault();
+            const full_name = form.elements['full_name'].value;
+            const email = form.elements['email'].value;
+            const year = form.elements['year'].value;
+            const { error } = await supabase
+                .from('waitlist')
+                .insert([{ full_name, email, year }]);
+            if (error) {
+                alert('There was an error joining the waitlist. Please try again.');
+            } else {
+                alert('Thank you for joining the waitlist!');
+                form.reset();
+            }
+        });
+    }
+});

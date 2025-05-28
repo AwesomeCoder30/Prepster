@@ -12,6 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <div id="free-trial-modal" class="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center z-50 hidden">
@@ -181,7 +182,7 @@
                 </div>
 
                 <div class="w-full lg:w-1/2 flex items-center justify-center h-full">
-                    <div class="w-full max-w-2xl rounded-2xl shadow-lg transition-transform hover:scale-[1.02] my-auto">
+                    <div class="w-full max-w-3xl rounded-2xl shadow-lg transition-transform hover:scale-[1.02] my-auto">
                         <img src="/assets/ai_analysis.png" alt="" class="w-full h-auto rounded-2xl" loading="lazy">
                     </div>
                 </div>
@@ -537,7 +538,7 @@
                 Be the first to know when Prepster launches.
             </p>
 
-            <form id="waitlistForm" action="https://formspree.io/f/mvgazqej" method="POST" class="space-y-4 md:space-y-6">
+            <form id="waitlistForm" class="space-y-4 md:space-y-6">
                 <input type="text" name="full_name" placeholder="Full Name" required class="w-full px-5 py-3 sm:px-6 sm:py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-base sm:text-lg">
                 <input type="email" name="email" placeholder="Email Address" required class="w-full px-5 py-3 sm:px-6 sm:py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-base sm:text-lg">
                 <input type="text" name="year" placeholder="Current Year (e.g., Sophomore, Gap Year)" class="w-full px-5 py-3 sm:px-6 sm:py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-base sm:text-lg">
@@ -559,8 +560,10 @@
     </footer>
     <script src="script.js"></script>
 
-    <!-- <a href="#get-started" class="fixed bottom-6 right-6 z-50 bg-green-600 text-white px-6 py-3 rounded-full shadow-lg cta-button block md:hidden transition hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
-        Get Started
+    <!-- Remove the chatbot trigger and overlay -->
+    <!-- Replace with a button linking to Beta testing -->
+    <!-- <a class="chatbot-trigger cta-button" id="chatbotTrigger" href="beta-testing.html">
+        <span>🧪</span> BETA Tester!
     </a> -->
 </body>
 
