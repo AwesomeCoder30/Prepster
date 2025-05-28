@@ -63,7 +63,6 @@
                 <a href="#testimonials" class="hover:text-green-600">Testimonials</a>
                 <a href="#faq" class="hover:text-green-600">FAQ</a>
                 <a href="#about" class="hover:text-green-600">About</a>
-                <a href="#get-started" class="hover:text-green-600">Waitlist</a>
             </nav>
 
             <!-- Right side items: Toggle, Waitlist (Desktop), Burger (Mobile) -->
@@ -102,7 +101,6 @@
                 <li><a href="#testimonials" class="block hover:text-green-600">Testimonials</a></li>
                 <li><a href="#faq" class="block hover:text-green-600">FAQ</a></li>
                 <li><a href="#about" class="block hover:text-green-600">About</a></li>
-                <li><a href="#get-started" class="block hover:text-green-600">Waitlist</a></li>
                 <li>
                     <a href="#get-started" class="block bg-green-600 text-white px-3 py-1 rounded text-xs font-medium hover:bg-green-700 transition text-center">
                         Get Started
@@ -127,9 +125,6 @@
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
                 <a href="#get-started" class="w-full sm:w-auto cta-button">
                     Get Started
-                </a>
-                <a href="#ai-mvp" class="w-full sm:w-auto secondary-button">
-                    Learn More
                 </a>
             </div>
 
@@ -169,11 +164,99 @@
                     <h3 class="section-title-enhanced text-left text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
                         Our AI Integration
                     </h3>
-                    <p class="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto lg:mx-0">
-                        Our AI analyzes your unique profile, interests, and location to deliver hyper-personalized recommendations. Get matched with research labs and professors doing work you're passionate about, find shadowing opportunities with physicians in your specialty
-                        of interest, and discover summer programs aligned with your goals. We combine AAMC guidelines, successful applicant data, and premed advisor expertise to create an adaptive roadmap that evolves with you - from customized MCAT study
-                        strategies to clinical experience suggestions that fit your schedule.
-                    </p>
+                    <div class="space-y-6 max-w-2xl mx-auto lg:mx-0 relative">
+                        <!-- Animated Progress Line -->
+                        <div class="progress-line">
+                            <div class="progress-fill"></div>
+                        </div>
+
+                        <!-- Floating Particles -->
+                        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+                        <div class="particle" style="left: 30%; animation-delay: 1s;"></div>
+                        <div class="particle" style="left: 50%; animation-delay: 2s;"></div>
+                        <div class="particle" style="left: 70%; animation-delay: 3s;"></div>
+                        <div class="particle" style="left: 90%; animation-delay: 4s;"></div>
+
+                        <div class="step-card relative" style="--delay: 0.1s;">
+                            <div class="flex items-start gap-4">
+                                <div class="number-circle flex-shrink-0 bg-gradient-to-br from-green-400 to-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shadow-lg floating shimmer" style="animation-delay: 0.5s;">
+                                    1
+                                </div>
+                                <div class="step-content flex-1">
+                                    <h4 class="font-bold text-xl text-gray-900 dark:text-white mb-2 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+                                        Personalized Profile Analysis
+                                    </h4>
+                                    <p class="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
+                                        Our AI analyzes your unique profile, interests, and location to deliver hyper-personalized recommendations.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step-card relative" style="--delay: 0.3s;">
+                            <div class="flex items-start gap-4">
+                                <div class="number-circle flex-shrink-0 bg-gradient-to-br from-green-400 to-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shadow-lg floating shimmer" style="animation-delay: 1s;">
+                                    2
+                                </div>
+                                <div class="step-content flex-1">
+                                    <h4 class="font-bold text-xl text-gray-900 dark:text-white mb-2 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+                                        Get Matched with Opportunities
+                                    </h4>
+                                    <p class="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
+                                        Get matched with research labs, professors, and shadowing opportunities in your specialty of interest.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step-card relative" style="--delay: 0.5s;">
+                            <div class="flex items-start gap-4">
+                                <div class="number-circle flex-shrink-0 bg-gradient-to-br from-green-400 to-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shadow-lg floating shimmer" style="animation-delay: 1.5s;">
+                                    3
+                                </div>
+                                <div class="step-content flex-1">
+                                    <h4 class="font-bold text-xl text-gray-900 dark:text-white mb-2 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+                                        Discover Aligned Programs
+                                    </h4>
+                                    <p class="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
+                                        Discover summer programs and experiences that align with your goals and schedule.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step-card relative" style="--delay: 0.7s;">
+                            <div class="flex items-start gap-4">
+                                <div class="number-circle flex-shrink-0 bg-gradient-to-br from-green-400 to-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shadow-lg floating shimmer" style="animation-delay: 2s;">
+                                    4
+                                </div>
+                                <div class="step-content flex-1">
+                                    <h4 class="font-bold text-xl text-gray-900 dark:text-white mb-2 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+                                        Expert-Driven Roadmap
+                                    </h4>
+                                    <p class="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
+                                        We combine AAMC guidelines, successful applicant data, and premed advisor expertise to create an adaptive roadmap just for you.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step-card relative" style="--delay: 0.9s;">
+                            <div class="flex items-start gap-4">
+                                <div class="number-circle flex-shrink-0 bg-gradient-to-br from-green-400 to-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shadow-lg floating shimmer" style="animation-delay: 2.5s;">
+                                    5
+                                </div>
+                                <div class="step-content flex-1">
+                                    <h4 class="font-bold text-xl text-gray-900 dark:text-white mb-2 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+                                        Customized Strategies
+                                    </h4>
+                                    <p class="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
+                                        From MCAT study strategies to clinical experience suggestions, your plan evolves as you do.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="py-8 sm:py-12">
                         <button id="show-roadmap-btn" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-medium transition-all transform hover:scale-105 text-sm sm:text-base">
                             Generate Sample Roadmap
@@ -382,37 +465,37 @@
                     <div class="slide">
                         <div class="testimonial-card">
                             <p class="testimonial-text">"I wish I had a tool that could tell me exactly what clinical experiences would be most valuable for my specific interests in pediatrics. There are so many options and I don't know what to prioritize."</p>
-                            <p class="testimonial-name">— sashah636</p>
+                            <p class="testimonial-name">— Sarah Shah</p>
                         </div>
                     </div>
                     <div class="slide">
                         <div class="testimonial-card">
                             <p class="testimonial-text">"Between classes, research, and volunteering, I'm struggling to create a balanced MCAT study schedule. I need something that can adapt when life gets busy and help me stay on track."</p>
-                            <p class="testimonial-name">— mchen892</p>
+                            <p class="testimonial-name">— Michael Chen</p>
                         </div>
                     </div>
                     <div class="slide">
                         <div class="testimonial-card">
                             <p class="testimonial-text">"As a first-gen student, I feel lost navigating the pre-med requirements. Having a personalized guide that breaks down exactly what I need for my target schools would be life-changing."</p>
-                            <p class="testimonial-name">— mrodriguez445</p>
+                            <p class="testimonial-name">— Miguel Rodriguez</p>
                         </div>
                     </div>
                     <div class="slide">
                         <div class="testimonial-card">
                             <p class="testimonial-text">"I'm working part-time while doing pre-med. I need help finding research and clinical opportunities that fit my limited availability. Most pre-med advice assumes you have unlimited time."</p>
-                            <p class="testimonial-name">— jkim773</p>
+                            <p class="testimonial-name">— John Kim</p>
                         </div>
                     </div>
                     <div class="slide">
                         <div class="testimonial-card">
                             <p class="testimonial-text">"There's so much conflicting advice online about what med schools want. I need clear, personalized guidance on which experiences will actually strengthen my specific application."</p>
-                            <p class="testimonial-name">— epatel224</p>
+                            <p class="testimonial-name">— Leila Thompson</p>
                         </div>
                     </div>
                     <div class="slide">
                         <div class="testimonial-card">
                             <p class="testimonial-text">"My school's pre-med advisor is overwhelmed with students. Having an AI advisor available 24/7 to answer questions and review my progress would help me feel more confident."</p>
-                            <p class="testimonial-name">— asmith519</p>
+                            <p class="testimonial-name">— Aiden Gupta</p>
                         </div>
                     </div>
 
@@ -420,37 +503,37 @@
                     <div class="slide">
                         <div class="testimonial-card">
                             <p class="testimonial-text">"I wish I had a tool that could tell me exactly what clinical experiences would be most valuable for my specific interests in pediatrics. There are so many options and I don't know what to prioritize."</p>
-                            <p class="testimonial-name">— sashah636</p>
+                            <p class="testimonial-name">— Sarah Shah</p>
                         </div>
                     </div>
                     <div class="slide">
                         <div class="testimonial-card">
                             <p class="testimonial-text">"Between classes, research, and volunteering, I'm struggling to create a balanced MCAT study schedule. I need something that can adapt when life gets busy and help me stay on track."</p>
-                            <p class="testimonial-name">— mchen892</p>
+                            <p class="testimonial-name">— Michael Chen</p>
                         </div>
                     </div>
                     <div class="slide">
                         <div class="testimonial-card">
                             <p class="testimonial-text">"As a first-gen student, I feel lost navigating the pre-med requirements. Having a personalized guide that breaks down exactly what I need for my target schools would be life-changing."</p>
-                            <p class="testimonial-name">— mrodriguez445</p>
+                            <p class="testimonial-name">— Miguel Rodriguez</p>
                         </div>
                     </div>
                     <div class="slide">
                         <div class="testimonial-card">
                             <p class="testimonial-text">"I'm working part-time while doing pre-med. I need help finding research and clinical opportunities that fit my limited availability. Most pre-med advice assumes you have unlimited time."</p>
-                            <p class="testimonial-name">— jkim773</p>
+                            <p class="testimonial-name">— John Kim</p>
                         </div>
                     </div>
                     <div class="slide">
                         <div class="testimonial-card">
                             <p class="testimonial-text">"There's so much conflicting advice online about what med schools want. I need clear, personalized guidance on which experiences will actually strengthen my specific application."</p>
-                            <p class="testimonial-name">— epatel224</p>
+                            <p class="testimonial-name">— Leila Thompson</p>
                         </div>
                     </div>
                     <div class="slide">
                         <div class="testimonial-card">
                             <p class="testimonial-text">"My school's pre-med advisor is overwhelmed with students. Having an AI advisor available 24/7 to answer questions and review my progress would help me feel more confident."</p>
-                            <p class="testimonial-name">— asmith519</p>
+                            <p class="testimonial-name">— Aiden Gupta</p>
                         </div>
                     </div>
                 </div>
@@ -486,9 +569,6 @@
             <div class="flex flex-wrap justify-center gap-3 mb-4">
                 <button class="category-filter active px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium text-sm" data-category="all">
                     All Questions
-                </button>
-                <button class="category-filter px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium text-sm" data-category="general">
-                    General
                 </button>
                 <button class="category-filter px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium text-sm" data-category="features">
                     Features

@@ -616,3 +616,71 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+window.addEventListener('load', () => {
+    const cards = document.querySelectorAll('.step-card');
+    cards.forEach(card => {
+        card.classList.add('animate');
+    });
+});
+
+// Add interactive hover effects
+document.querySelectorAll('.step-card').forEach((card, index) => {
+    card.addEventListener('mouseenter', () => {
+        // Add ripple effect
+        const ripple = document.createElement('div');
+        ripple.style.cssText = `
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: ripple 0.6s ease-out;
+            pointer-events: none;
+            z-index: 0;
+        `;
+
+        card.appendChild(ripple);
+
+        setTimeout(() => {
+            if (ripple.parentNode) {
+                ripple.parentNode.removeChild(ripple);
+            }
+        }, 600);
+    });
+});
+
+// Add ripple animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes ripple {
+        0% {
+            width: 0;
+            height: 0;
+            opacity: 1;
+        }
+        100% {
+            width: 200px;
+            height: 200px;
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// Intersection Observer for scroll animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.transform = 'translateX(0)';
+            entry.target.style.opacity = '1';
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.step-card').forEach(card => {
+    observer.observe(card);
+});

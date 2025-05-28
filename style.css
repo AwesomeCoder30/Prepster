@@ -1185,3 +1185,161 @@ html.dark body {
         font-size: 13px;
     }
 }
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse-glow {
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(34, 197, 94, 0.6);
+    }
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes progressFill {
+    0% {
+        height: 0%;
+    }
+    100% {
+        height: 100%;
+    }
+}
+
+.step-card {
+    animation: slideInFromLeft 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.step-card.animate {
+    animation-delay: var(--delay);
+}
+
+.number-circle {
+    transition: all 0.3s ease;
+}
+
+.number-circle:hover {
+    animation: pulse-glow 2s infinite;
+    transform: scale(1.1);
+}
+
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+.progress-line {
+    position: absolute;
+    left: 20px;
+    top: 60px;
+    width: 2px;
+    height: calc(100% - 60px);
+    background: linear-gradient(to bottom, #d1fae5, #10b981);
+    opacity: 0.3;
+}
+
+.progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to bottom, #10b981, #059669);
+    animation: progressFill 3s ease-out forwards;
+    animation-delay: 1s;
+}
+
+.step-content {
+    transition: all 0.3s ease;
+}
+
+.step-card:hover .step-content {
+    transform: translateX(5px);
+}
+
+.step-card:hover {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(5, 150, 105, 0.1));
+    border-radius: 12px;
+    padding: 1rem;
+    margin: -1rem;
+}
+
+.icon-container {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.step-card:hover .icon-container {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+.shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+.shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #10b981;
+    border-radius: 50%;
+    opacity: 0;
+    animation: particleFloat 4s infinite ease-in-out;
+}
+
+@keyframes particleFloat {
+    0%,
+    100% {
+        opacity: 0;
+        transform: translateY(0) scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-20px) scale(1);
+    }
+}
