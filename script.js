@@ -598,20 +598,53 @@ const supabase = window.supabase.createClient(
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('waitlistForm');
+    const waitlistContainer = document.getElementById('waitlist-form-container');
+    const thankYouContainer = document.getElementById('thank-you-container');
+
+    // Check if user has already submitted the form
+    const hasSubmitted = localStorage.getItem('waitlistSubmitted');
+    if (hasSubmitted) {
+        waitlistContainer.classList.add('hidden');
+        thankYouContainer.classList.remove('hidden');
+    }
+
     if (form) {
         form.addEventListener('submit', async(e) => {
             e.preventDefault();
+
+            // Disable the submit button to prevent double submission
+            const submitButton = form.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
+
             const full_name = form.elements['full_name'].value;
             const email = form.elements['email'].value;
             const year = form.elements['year'].value;
-            const { error } = await supabase
-                .from('waitlist')
-                .insert([{ full_name, email, year }]);
-            if (error) {
+
+            try {
+                const { error } = await supabase
+                    .from('waitlist')
+                    .insert([{ full_name, email, year }]);
+
+                if (error) {
+                    throw error;
+                }
+
+                // Store submission state in localStorage
+                localStorage.setItem('waitlistSubmitted', 'true');
+
+                // Hide form and show thank you message
+                waitlistContainer.classList.add('hidden');
+                thankYouContainer.classList.remove('hidden');
+
+                // Smooth scroll to the section
+                document.getElementById('get-started').scrollIntoView({ behavior: 'smooth' });
+
+            } catch (error) {
+                console.error('Error submitting form:', error);
                 alert('There was an error joining the waitlist. Please try again.');
-            } else {
-                alert('Thank you for joining the waitlist!');
-                form.reset();
+                submitButton.disabled = false;
+                submitButton.textContent = 'Get Started';
             }
         });
     }
