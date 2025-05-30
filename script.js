@@ -597,13 +597,18 @@ const supabase = window.supabase.createClient(
 );
 
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM Content Loaded - Initializing form handlers');
+
     const form = document.getElementById('waitlistForm');
     const waitlistContainer = document.getElementById('waitlist-form-container');
     const thankYouContainer = document.getElementById('thank-you-container');
 
+    console.log('Form elements found:', { form, waitlistContainer, thankYouContainer });
+
     // Check if user has already submitted the form
     const hasSubmitted = localStorage.getItem('waitlistSubmitted');
     if (hasSubmitted) {
+        console.log('User has previously submitted form');
         waitlistContainer.classList.add('hidden');
         thankYouContainer.classList.remove('hidden');
     }
@@ -611,6 +616,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (form) {
         form.addEventListener('submit', async(e) => {
             e.preventDefault();
+            console.log('Form submitted');
 
             // Disable the submit button to prevent double submission
             const submitButton = form.querySelector('button[type="submit"]');
@@ -621,15 +627,68 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = form.elements['email'].value;
             const year = form.elements['year'].value;
 
-            try {
-                const { error } = await supabase
-                    .from('waitlist')
-                    .insert([{ full_name, email, year }]);
+            // Normalize email for case-insensitive check and insert
+            const emailInput = email.trim().toLowerCase();
+            console.log('Form data:', { full_name, email: emailInput, year });
 
-                if (error) {
-                    throw error;
+            try {
+                // Debug: Print all emails in the database
+                const { data: allEmails, error: allError } = await supabase
+                    .from('waitlist')
+                    .select('email');
+                if (allError) {
+                    console.error('Error fetching all emails:', allError);
+                } else {
+                    console.log('All emails in DB:', allEmails);
                 }
 
+                // Debug: Wildcard search for email
+                const { data: wildcardUsers, error: wildcardError } = await supabase
+                    .from('waitlist')
+                    .select('email')
+                    .ilike('email', `%${emailInput}%`);
+                if (wildcardError) {
+                    console.error('Error with wildcard search:', wildcardError);
+                } else {
+                    console.log('Wildcard search result:', wildcardUsers);
+                }
+
+                // First check if email already exists (case-insensitive, exact match)
+                console.log('Checking if email exists (case-insensitive):', emailInput);
+                const { data: existingUsers, error: checkError } = await supabase
+                    .from('waitlist')
+                    .select('email')
+                    .ilike('email', emailInput);
+
+                console.log('Email check result:', { existingUsers, checkError });
+
+                if (checkError) {
+                    console.error('Error checking email:', checkError);
+                    throw checkError;
+                }
+
+                if (existingUsers && existingUsers.length > 0) {
+                    console.log('Email already exists, showing thank you message');
+                    // Email exists, show thank you message
+                    localStorage.setItem('waitlistSubmitted', 'true');
+                    waitlistContainer.classList.add('hidden');
+                    thankYouContainer.classList.remove('hidden');
+                    document.getElementById('get-started').scrollIntoView({ behavior: 'smooth' });
+                    return;
+                }
+
+                console.log('Email is new, proceeding with insertion');
+                // Email doesn't exist, proceed with insertion (normalized email)
+                const { error: insertError } = await supabase
+                    .from('waitlist')
+                    .insert([{ full_name, email: emailInput, year }]);
+
+                if (insertError) {
+                    console.error('Error inserting new record:', insertError);
+                    throw insertError;
+                }
+
+                console.log('Successfully inserted new record');
                 // Store submission state in localStorage
                 localStorage.setItem('waitlistSubmitted', 'true');
 
@@ -641,12 +700,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('get-started').scrollIntoView({ behavior: 'smooth' });
 
             } catch (error) {
-                console.error('Error submitting form:', error);
+                console.error('Error in form submission process:', error);
                 alert('There was an error joining the waitlist. Please try again.');
                 submitButton.disabled = false;
                 submitButton.textContent = 'Get Started';
             }
         });
+    } else {
+        console.error('Waitlist form not found in the DOM');
     }
 });
 
