@@ -4,77 +4,378 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Beta Testing Application</title>
+    <title>Prepster AI Beta Testing Program</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            box-sizing: border-box;
+        }
+        
         body {
-            background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%);
+            background: #f0fdf4;
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            border: 1px solid #bbf7d0;
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .slide-up {
+            animation: slideUp 0.8s ease-out forwards;
+            transform: translateY(30px);
+            opacity: 0;
+        }
+        
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #22c55e, #16a34a, #a3e635, #facc15);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 300% 300%;
+            animation: gradientShift 4s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+        
+        .ai-glow {
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
+            animation: aiPulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes aiPulse {
+            0%,
+            100% {
+                box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 50px rgba(168, 85, 247, 0.7);
+            }
+        }
+        
+        .form-field {
+            transition: all 0.3s ease;
             position: relative;
         }
         
-        #betaCanvas {
+        .form-field:focus-within {
+            transform: translateY(-2px);
+        }
+        
+        .form-field input,
+        .form-field textarea,
+        .form-field select {
+            transition: all 0.3s ease;
+        }
+        
+        .form-field input:focus,
+        .form-field textarea:focus,
+        .form-field select:focus {
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.3);
+            border-color: #22c55e;
+        }
+        
+        .btn-primary,
+        .cta-green {
+            background: linear-gradient(90deg, #22c55e, #16a34a, #a3e635, #facc15);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before,
+        .cta-green::before {
+            content: '';
             position: absolute;
-            inset: 0;
+            top: 0;
+            left: -100%;
             width: 100%;
             height: 100%;
-            z-index: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-primary:hover::before,
+        .cta-green:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover,
+        .cta-green:hover {
+            background: linear-gradient(90deg, #16a34a, #22c55e, #facc15);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(34, 197, 94, 0.2);
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .feature-card:hover::before {
+            left: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(168, 85, 247, 0.3);
+        }
+        
+        .progress-bar {
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        #particles {
+            position: fixed;
+            inset: 0;
             pointer-events: none;
+            z-index: 0;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .typing-effect {
+            border-right: 2px solid #22c55e;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%,
+            50% {
+                border-color: transparent;
+            }
+            51%,
+            100% {
+                border-color: #22c55e;
+            }
+        }
+        
+        .celebration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        
+        .academic-icon {
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .brain-animation {
+            animation: brainPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes brainPulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .floating {
+                animation: none;
+            }
         }
     </style>
 </head>
 
-<body class="text-gray-900 font-sans relative">
-    <canvas id="betaCanvas" class="fixed inset-0 w-screen h-screen z-0 hidden md:block"></canvas>
-    <section class="relative min-h-screen flex items-center justify-center px-4 py-20 z-10">
-        <div class="container mx-auto flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20">
-            <!-- Left Side -->
-            <div class="flex flex-col w-full max-w-3xl lg:w-1/2 lg:pr-12 space-y-10">
-                <div class="flex items-center space-x-4">
-                    <div class="bg-green-200 text-green-700 font-bold w-14 h-14 rounded-full flex items-center justify-center text-2xl" style="font-family: 'Libre Baskerville', serif;">
-                        B
+<body class="text-gray-900 bg-green-50 dark:bg-gray-900 dark:text-white relative font-sans">
+    <canvas id="medicalCanvas" class="fixed inset-0 w-screen h-screen z-0"></canvas>
+    <div class="content-wrapper min-h-screen flex flex-col justify-center items-center py-16 px-4">
+        <div class="w-full max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 md:p-12">
+            <!-- Back to Main Site Button -->
+            <div class="w-full flex justify-start mb-4">
+                <a href="./index.html" class="secondary-button px-5 py-2 text-sm font-semibold flex items-center gap-2">
+                    <svg class="w-4 h-4 mr-1 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg> Back to Main Site
+                </a>
+            </div>
+
+            <!-- Logo and Brand -->
+            <div class="flex items-center space-x-4 mb-8">
+                <img src="../../public/images/logo.png" class="h-12 w-12 rounded-xl shadow" alt="Prepster Logo">
+                <span class="text-4xl font-bold gradient-text" style="font-family: 'Playfair Display', serif;">Prepster AI</span>
+            </div>
+
+            <!-- Main Heading with Typing Effect -->
+            <h1 class="text-3xl md:text-5xl font-black leading-tight text-center mb-4" style="font-family: 'Playfair Display', serif;">
+                Revolutionize Your <span class="gradient-text typing-effect" id="typingText">Study Experience</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-700 dark:text-gray-200 text-center mb-8">
+                Join our exclusive beta program and be among the first students to experience AI-powered study tools that adapt to your learning style and accelerate your academic success.
+            </p>
+
+            <!-- Enhanced Form -->
+            <form id="betaForm" class="space-y-6 max-w-2xl mx-auto">
+                <div class="form-field">
+                    <input type="text" name="name" placeholder="Full Name" required class="w-full px-5 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-base bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500">
+                </div>
+                <div class="form-field">
+                    <input type="email" name="email" placeholder="Email Address" required class="w-full px-5 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-base bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500">
+                </div>
+                <div class="form-field">
+                    <select name="education_level" required class="w-full px-5 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-base bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+                        <option value="">Select your education level</option>
+                        <option value="high_school">High School</option>
+                        <option value="undergraduate">Undergraduate</option>
+                        <option value="graduate">Graduate School</option>
+                        <option value="professional">Professional/Continuing Education</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <select name="field_of_study" required class="w-full px-5 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-base bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+                        <option value="">Primary field of study</option>
+                        <option value="stem">STEM (Science, Technology, Engineering, Math)</option>
+                        <option value="business">Business & Economics</option>
+                        <option value="liberal_arts">Liberal Arts & Humanities</option>
+                        <option value="social_sciences">Social Sciences</option>
+                        <option value="health">Health Sciences</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <textarea name="study_challenges" placeholder="What are your biggest study challenges? What would you like AI to help you with?" required rows="4" class="w-full px-5 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-base bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 resize-none"></textarea>
+                </div>
+                <div class="form-field">
+                    <input type="text" name="current_tools" placeholder="Current study tools/apps you use (e.g., Anki, Notion, Quizlet)" class="w-full px-5 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-base bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500">
+                </div>
+                <div class="form-field">
+                    <label class="block text-gray-800 dark:text-gray-200 mb-2 font-medium">How many hours do you study per week?</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="study_hours" value="1-10" required class="accent-purple-500">
+                            <span>1-10 hours</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="study_hours" value="11-20" required class="accent-purple-500">
+                            <span>11-20 hours</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="study_hours" value="21-30" required class="accent-purple-500">
+                            <span>21-30 hours</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="study_hours" value="30+" required class="accent-purple-500">
+                            <span>30+ hours</span>
+                        </label>
                     </div>
-                    <span class="text-4xl font-bold text-green-700" style="font-family: 'Libre Baskerville', serif;">Beta Test</span>
                 </div>
-                <h1 class="text-3xl md:text-5xl lg:text-5xl font-extrabold leading-tight w-full text-center lg:text-left mt-4">
-                    Apply to Beta Test Our Product
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-700 max-w-2xl">
-                    Be among the first to try our latest features and help shape the future of our product. Sign up below to join our exclusive beta testing program!
-                </p>
-                <ul class="list-disc pl-6 text-lg text-gray-600 space-y-2">
-                    <li>Early access to new features</li>
-                    <li>Direct feedback channel to our team</li>
-                    <li>Exclusive beta tester perks</li>
-                </ul>
-            </div>
-            <!-- Right Side (Form) -->
-            <div class="w-full lg:w-1/2 flex justify-center">
-                <div class="bg-white rounded-2xl shadow-2xl p-8 sm:p-12 md:p-16 w-full max-w-2xl">
-                    <h2 class="text-3xl md:text-4xl font-extrabold mb-6 text-center">Beta Tester Application</h2>
-                    <p class="text-gray-600 text-center mb-8 text-base md:text-lg">Fill out the form to apply for beta access.</p>
-                    <form id="betaForm" action="https://formspree.io/f/mvgazqej" method="POST" class="space-y-6">
-                        <input type="text" name="name" placeholder="Full Name" required class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-lg">
-                        <input type="email" name="email" placeholder="Email Address" required class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-lg">
-                        <textarea name="reason" placeholder="Why do you want to beta test?" required class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-lg"></textarea>
-                        <input type="text" name="device" placeholder="Device/Platform (e.g., iPhone 14, Windows 11)" class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-lg">
-                        <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-lg font-bold text-lg">
-                            Apply Now
-                        </button>
-                    </form>
-                    <p class="text-sm text-gray-400 text-center mt-6">We respect your privacy. No spam, ever.</p>
-                    <div id="betaFormMsg" class="text-center mt-4 text-lg font-semibold hidden"></div>
+                <div class="form-field">
+                    <label class="block text-gray-800 dark:text-gray-200 mb-2 font-medium">Beta testing commitment (hours per week)</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="testing_commitment" value="2-5" required class="accent-purple-500">
+                            <span>2-5 hours</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="testing_commitment" value="6-10" required class="accent-purple-500">
+                            <span>6-10 hours</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="testing_commitment" value="11-15" required class="accent-purple-500">
+                            <span>11-15 hours</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="testing_commitment" value="15+" required class="accent-purple-500">
+                            <span>15+ hours</span>
+                        </label>
+                    </div>
                 </div>
+                <button type="submit" class="w-full btn-primary cta-green py-3 rounded-lg font-bold text-lg text-white transition-all">
+                    <span id="submitText">🚀 Apply for Beta Access</span>
+                    <span id="loadingText" class="hidden">🧠 Processing Application...</span>
+                </button>
+            </form>
+            <div class="text-center mt-6 space-y-2">
+                <p class="text-sm text-gray-400 dark:text-gray-500">🔒 Your data is secure. We respect student privacy.</p>
+                <p class="text-xs text-gray-300 dark:text-gray-600">By applying, you agree to provide feedback and help improve Prepster AI.</p>
             </div>
+            <div id="betaFormMsg" class="text-center mt-6 text-lg font-semibold hidden rounded-lg p-4"></div>
         </div>
-    </section>
-    <script src="../js/script.js"></script>
+    </div>
+
+    <!-- Celebration Canvas -->
+    <div class="celebration" id="celebration"></div>
+
     <script>
-        // Animated background (cells/particles)
+        // Floating green particles background (from index.html)
         document.addEventListener("DOMContentLoaded", () => {
-            const canvas = document.getElementById("betaCanvas");
+            const canvas = document.getElementById("medicalCanvas");
             if (!canvas) return;
             const ctx = canvas.getContext("2d");
 
@@ -88,11 +389,11 @@
             let mouseX = 0;
             let mouseY = 0;
             const particles = Array.from({
-                length: 250
+                length: 160
             }, () => ({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                baseR: Math.random() * 3 + 1,
+                baseR: Math.random() * 2 + 1,
                 r: 0,
                 dx: (Math.random() - 0.5) * 0.5,
                 dy: (Math.random() - 0.5) * 0.5,
@@ -115,13 +416,14 @@
                     p.r = p.baseR * pulse;
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                    ctx.fillStyle = "rgba(16, 185, 129, 0.25)";
+                    ctx.fillStyle = "rgba(34,197,94,0.25)";
                     ctx.fill();
                 });
             }
-            window.addEventListener("mousemove", (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
+            canvas.addEventListener("mousemove", (e) => {
+                const rect = canvas.getBoundingClientRect();
+                mouseX = e.clientX - rect.left;
+                mouseY = e.clientY - rect.top;
             });
 
             function animate() {
@@ -132,32 +434,42 @@
             }
             animate();
         });
-        // Form submission with feedback
-        document.getElementById("betaForm").addEventListener("submit", function(e) {
-            e.preventDefault();
-            const form = e.target;
-            const msg = document.getElementById("betaFormMsg");
-            fetch(form.action, {
-                method: form.method,
-                body: new FormData(form),
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    msg.textContent = "Thank you for applying! We'll be in touch soon.";
-                    msg.classList.remove("hidden", "text-red-600");
-                    msg.classList.add("text-green-600");
-                    form.reset();
-                } else {
-                    msg.textContent = "Oops! Something went wrong. Please try again.";
-                    msg.classList.remove("hidden", "text-green-600");
-                    msg.classList.add("text-red-600");
-                }
-            }).catch(error => {
-                msg.textContent = "Network error. Please try again.";
-                msg.classList.remove("hidden", "text-green-600");
-                msg.classList.add("text-red-600");
+
+        // Typing effect for main heading
+        const phrases = ["Study Experience", "Learning Journey", "Academic Success", "Test Preparation", "Study Efficiency"];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById("typingText");
+
+        function typeEffect() {
+            const currentPhrase = phrases[phraseIndex];
+
+            if (isDeleting) {
+                typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                setTimeout(() => isDeleting = true, 1200);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+            }
+
+            const typeSpeed = isDeleting ? 40 : 80;
+            setTimeout(typeEffect, typeSpeed);
+        }
+        setTimeout(typeEffect, 1000);
+
+        // Form field value display fix (for radio/checkboxes)
+        document.querySelectorAll('input, textarea, select').forEach(el => {
+            el.addEventListener('change', function() {
+                this.blur();
+                this.focus();
             });
         });
     </script>
