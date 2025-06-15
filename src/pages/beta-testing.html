@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="../../public/images/logo.png">
     <title>Prepster AI Beta Testing Program</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -267,13 +268,13 @@
             </div>
 
             <!-- Logo and Brand -->
-            <div class="flex items-center space-x-4 mb-8">
-                <img src="../../public/images/logo.png" class="h-12 w-12 rounded-xl shadow" alt="Prepster Logo">
-                <span class="text-4xl font-bold gradient-text" style="font-family: 'Playfair Display', serif;">Prepster AI</span>
+            <div class="flex items-center space-x-3 mb-8">
+                <img class="h-8 w-auto sm:h-10" src="../../public/images/logo.png" alt="Prepster Logo">
+                <span class="text-3xl font-bold text-green-600" style="font-family: 'Inter', sans-serif;">Prepster</span>
             </div>
 
             <!-- Main Heading with Typing Effect -->
-            <h1 class="text-3xl md:text-5xl font-black leading-tight text-center mb-4" style="font-family: 'Playfair Display', serif;">
+            <h1 class="text-3xl md:text-5xl font-black leading-tight text-center mb-4">
                 Revolutionize Your <span class="gradient-text typing-effect" id="typingText">Study Experience</span>
             </h1>
             <p class="text-lg md:text-xl text-gray-700 dark:text-gray-200 text-center mb-8">
@@ -283,13 +284,16 @@
             <!-- Enhanced Form -->
             <form id="betaForm" class="space-y-6 max-w-2xl mx-auto">
                 <div class="form-field">
-                    <input type="text" name="name" placeholder="Full Name" required class="w-full px-5 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-base bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500">
+                    <label for="name" class="block mb-1 font-medium text-gray-800">Full Name</label>
+                    <input type="text" id="name" name="name" required class="w-full px-5 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-base bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
                 </div>
                 <div class="form-field">
-                    <input type="email" name="email" placeholder="Email Address" required class="w-full px-5 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-base bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500">
+                    <label for="email" class="block mb-1 font-medium text-gray-800">Email Address</label>
+                    <input type="email" id="email" name="email" required class="w-full px-5 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-base bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
                 </div>
                 <div class="form-field">
-                    <select name="education_level" required class="w-full px-5 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-base bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+                    <label for="education_level" class="block mb-1 font-medium text-gray-800">Education Level</label>
+                    <select id="education_level" name="education_level" required class="w-full px-5 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-base bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
                         <option value="">Select your education level</option>
                         <option value="high_school">High School</option>
                         <option value="undergraduate">Undergraduate</option>
@@ -298,8 +302,9 @@
                     </select>
                 </div>
                 <div class="form-field">
-                    <select name="field_of_study" required class="w-full px-5 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-base bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
-                        <option value="">Primary field of study</option>
+                    <label for="field_of_study" class="block mb-1 font-medium text-gray-800">Primary Field of Study</label>
+                    <select id="field_of_study" name="field_of_study" required class="w-full px-5 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-base bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+                        <option value="">Select your field of study</option>
                         <option value="stem">STEM (Science, Technology, Engineering, Math)</option>
                         <option value="business">Business & Economics</option>
                         <option value="liberal_arts">Liberal Arts & Humanities</option>
@@ -309,60 +314,53 @@
                     </select>
                 </div>
                 <div class="form-field">
-                    <textarea name="study_challenges" placeholder="What are your biggest study challenges? What would you like AI to help you with?" required rows="4" class="w-full px-5 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-base bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 resize-none"></textarea>
+                    <label for="study_challenges" class="block mb-1 font-medium text-gray-800">What are your biggest study challenges? What would you like AI to help you with?</label>
+                    <textarea id="study_challenges" name="study_challenges" required rows="4" class="w-full px-5 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-base bg-white dark:bg-gray-900 text-gray-900 dark:text-white resize-none"></textarea>
                 </div>
                 <div class="form-field">
-                    <input type="text" name="current_tools" placeholder="Current study tools/apps you use (e.g., Anki, Notion, Quizlet)" class="w-full px-5 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-base bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500">
+                    <label for="current_tools" class="block mb-1 font-medium text-gray-800">Current study tools/apps you use (e.g., Anki, Notion, Quizlet)</label>
+                    <input type="text" id="current_tools" name="current_tools" class="w-full px-5 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-base bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
                 </div>
                 <div class="form-field">
-                    <label class="block text-gray-800 dark:text-gray-200 mb-2 font-medium">How many hours do you study per week?</label>
+                    <label for="why_prepster" class="block mb-1 font-medium text-gray-800">Why would Prepster help you?</label>
+                    <textarea id="why_prepster" name="why_prepster" required rows="3" class="w-full px-5 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-base bg-white dark:bg-gray-900 text-gray-900 dark:text-white resize-none"></textarea>
+                </div>
+                <div class="form-field">
+                    <label for="good_fit" class="block mb-1 font-medium text-gray-800">Why do you think you're a good fit?</label>
+                    <textarea id="good_fit" name="good_fit" required rows="3" class="w-full px-5 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-base bg-white dark:bg-gray-900 text-gray-900 dark:text-white resize-none"></textarea>
+                </div>
+                <div class="form-field">
+                    <label for="hear_about" class="block mb-1 font-medium text-gray-800">How did you hear about us?</label>
+                    <input type="text" id="hear_about" name="hear_about" class="w-full px-5 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-base bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+                </div>
+                <div class="form-field">
+                    <label class="block mb-1 font-medium text-gray-800">Beta testing commitment (hours per week)</label>
                     <div class="grid grid-cols-2 gap-3">
                         <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="radio" name="study_hours" value="1-10" required class="accent-purple-500">
-                            <span>1-10 hours</span>
-                        </label>
-                        <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="radio" name="study_hours" value="11-20" required class="accent-purple-500">
-                            <span>11-20 hours</span>
-                        </label>
-                        <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="radio" name="study_hours" value="21-30" required class="accent-purple-500">
-                            <span>21-30 hours</span>
-                        </label>
-                        <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="radio" name="study_hours" value="30+" required class="accent-purple-500">
-                            <span>30+ hours</span>
-                        </label>
-                    </div>
-                </div>
-                <div class="form-field">
-                    <label class="block text-gray-800 dark:text-gray-200 mb-2 font-medium">Beta testing commitment (hours per week)</label>
-                    <div class="grid grid-cols-2 gap-3">
-                        <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="radio" name="testing_commitment" value="2-5" required class="accent-purple-500">
+                            <input type="radio" name="testing_commitment" value="2-5" required class="accent-green-500">
                             <span>2-5 hours</span>
                         </label>
                         <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="radio" name="testing_commitment" value="6-10" required class="accent-purple-500">
+                            <input type="radio" name="testing_commitment" value="6-10" required class="accent-green-500">
                             <span>6-10 hours</span>
                         </label>
                         <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="radio" name="testing_commitment" value="11-15" required class="accent-purple-500">
+                            <input type="radio" name="testing_commitment" value="11-15" required class="accent-green-500">
                             <span>11-15 hours</span>
                         </label>
                         <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="radio" name="testing_commitment" value="15+" required class="accent-purple-500">
+                            <input type="radio" name="testing_commitment" value="15+" required class="accent-green-500">
                             <span>15+ hours</span>
                         </label>
                     </div>
                 </div>
-                <button type="submit" class="w-full btn-primary cta-green py-3 rounded-lg font-bold text-lg text-white transition-all">
-                    <span id="submitText">🚀 Apply for Beta Access</span>
-                    <span id="loadingText" class="hidden">🧠 Processing Application...</span>
+                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 py-3 rounded-lg font-bold text-lg text-white transition-all">
+                    <span id="submitText">Apply for Beta Access</span>
+                    <span id="loadingText" class="hidden">Processing Application...</span>
                 </button>
             </form>
             <div class="text-center mt-6 space-y-2">
-                <p class="text-sm text-gray-400 dark:text-gray-500">🔒 Your data is secure. We respect student privacy.</p>
+                <p class="text-sm text-gray-400 dark:text-gray-500">Your data is secure. We respect student privacy.</p>
                 <p class="text-xs text-gray-300 dark:text-gray-600">By applying, you agree to provide feedback and help improve Prepster AI.</p>
             </div>
             <div id="betaFormMsg" class="text-center mt-6 text-lg font-semibold hidden rounded-lg p-4"></div>
