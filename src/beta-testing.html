@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="../../public/images/logo.png">
+    <link rel="icon" type="image/png" href="images/logo.png">
     <title>Prepster AI Beta Testing Program</title>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/script.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -262,14 +264,14 @@
         <div class="w-full max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 md:p-12">
             <!-- Back to Main Site Button -->
             <div class="w-full flex justify-start mb-4">
-                <a href="./index.html" class="secondary-button px-5 py-2 text-sm font-semibold flex items-center gap-2">
+                <a href="index.html" class="secondary-button px-5 py-2 text-sm font-semibold flex items-center gap-2">
                     <svg class="w-4 h-4 mr-1 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg> Back to Main Site
                 </a>
             </div>
 
             <!-- Logo and Brand -->
             <div class="flex items-center space-x-3 mb-8">
-                <img class="h-8 w-auto sm:h-10" src="../../public/images/logo.png" alt="Prepster Logo">
+                <img class="h-8 w-auto sm:h-10" src="images/logo.png" alt="Prepster Logo">
                 <span class="text-3xl font-bold text-green-600" style="font-family: 'Inter', sans-serif;">Prepster</span>
             </div>
 
@@ -433,103 +435,109 @@
                 requestAnimationFrame(animate);
             }
             animate();
-        });
 
-        // Typing effect for main heading
-        const phrases = ["Study Experience", "Learning Journey", "Academic Success", "Test Preparation", "Study Efficiency"];
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typingElement = document.getElementById("typingText");
+            // Typing effect for main heading
+            const phrases = [
+                "Study Experience",
+                "Learning Journey",
+                "Academic Success",
+                "Test Preparation",
+                "Study Efficiency"
+            ];
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            const typingElement = document.getElementById("typingText");
 
-        function typeEffect() {
-            const currentPhrase = phrases[phraseIndex];
+            function typeEffect() {
+                const currentPhrase = phrases[phraseIndex];
 
-            if (isDeleting) {
-                typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
-                charIndex++;
+                if (isDeleting) {
+                    typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+
+                if (!isDeleting && charIndex === currentPhrase.length) {
+                    setTimeout(() => isDeleting = true, 1200);
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                }
+
+                const typeSpeed = isDeleting ? 40 : 80;
+                setTimeout(typeEffect, typeSpeed);
             }
+            setTimeout(typeEffect, 1000);
 
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                setTimeout(() => isDeleting = true, 1200);
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-            }
-
-            const typeSpeed = isDeleting ? 40 : 80;
-            setTimeout(typeEffect, typeSpeed);
-        }
-        setTimeout(typeEffect, 1000);
-
-        // Form field value display fix (for radio/checkboxes)
-        document.querySelectorAll('input, textarea, select').forEach(el => {
-            el.addEventListener('change', function() {
-                this.blur();
-                this.focus();
-            });
-        });
-
-        // Supabase form submission for beta testers
-        const supabase = window.supabase.createClient(
-            'https://dldcwmgyffkzslbmddva.supabase.co',
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRsZGN3bWd5ZmZrenNsYm1kZHZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzOTAzODgsImV4cCI6MjA2Mzk2NjM4OH0.dXv57u4pSbWoNioKV45aNpfGMBGS0txZPcWMi3DOLTU'
-        );
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('betaForm');
-            const submitText = document.getElementById('submitText');
-            const loadingText = document.getElementById('loadingText');
-            const betaFormMsg = document.getElementById('betaFormMsg');
-
-            if (form) {
-                form.addEventListener('submit', async(e) => {
-                    e.preventDefault();
-                    submitText.style.display = 'none';
-                    loadingText.style.display = 'inline';
-                    betaFormMsg.classList.add('hidden');
-                    betaFormMsg.textContent = '';
-
-                    // Collect form data
-                    const data = {
-                        name: form.elements['name'].value,
-                        email: form.elements['email'].value,
-                        education_level: form.elements['education_level'].value,
-                        field_of_study: form.elements['field_of_study'].value,
-                        study_challenges: form.elements['study_challenges'].value,
-                        current_tools: form.elements['current_tools'].value,
-                        help: form.elements['help'].value,
-                        good_fit: form.elements['good_fit'].value,
-                        referral: form.elements['referral'].value,
-                        testing_commitment: form.elements['testing_commitment'].value
-                    };
-
-                    try {
-                        const {
-                            error
-                        } = await supabase
-                            .from('beta-testing')
-                            .insert([data]);
-                        if (error) {
-                            throw error;
-                        }
-                        form.reset();
-                        betaFormMsg.textContent = 'Thank you for applying! We appreciate your interest.';
-                        betaFormMsg.classList.remove('hidden');
-                        betaFormMsg.classList.add('bg-green-100', 'text-green-800');
-                    } catch (err) {
-                        betaFormMsg.textContent = 'There was an error submitting your application. Please try again.';
-                        betaFormMsg.classList.remove('hidden');
-                        betaFormMsg.classList.add('bg-red-100', 'text-red-800');
-                    } finally {
-                        submitText.style.display = 'inline';
-                        loadingText.style.display = 'none';
-                    }
+            // Form field value display fix (for radio/checkboxes)
+            document.querySelectorAll('input, textarea, select').forEach(el => {
+                el.addEventListener('change', function() {
+                    this.blur();
+                    this.focus();
                 });
-            }
+            });
+
+            // Supabase form submission for beta testers
+            const supabase = window.supabase.createClient(
+                'https://dldcwmgyffkzslbmddva.supabase.co',
+                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRsZGN3bWd5ZmZrenNsYm1kZHZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzOTAzODgsImV4cCI6MjA2Mzk2NjM4OH0.dXv57u4pSbWoNioKV45aNpfGMBGS0txZPcWMi3DOLTU'
+            );
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const form = document.getElementById('betaForm');
+                const submitText = document.getElementById('submitText');
+                const loadingText = document.getElementById('loadingText');
+                const betaFormMsg = document.getElementById('betaFormMsg');
+
+                if (form) {
+                    form.addEventListener('submit', async(e) => {
+                        e.preventDefault();
+                        submitText.style.display = 'none';
+                        loadingText.style.display = 'inline';
+                        betaFormMsg.classList.add('hidden');
+                        betaFormMsg.textContent = '';
+
+                        // Collect form data
+                        const data = {
+                            name: form.elements['name'].value,
+                            email: form.elements['email'].value,
+                            education_level: form.elements['education_level'].value,
+                            field_of_study: form.elements['field_of_study'].value,
+                            study_challenges: form.elements['study_challenges'].value,
+                            current_tools: form.elements['current_tools'].value,
+                            help: form.elements['help'].value,
+                            good_fit: form.elements['good_fit'].value,
+                            referral: form.elements['referral'].value,
+                            testing_commitment: form.elements['testing_commitment'].value
+                        };
+
+                        try {
+                            const {
+                                error
+                            } = await supabase
+                                .from('beta-testing')
+                                .insert([data]);
+                            if (error) {
+                                throw error;
+                            }
+                            form.reset();
+                            betaFormMsg.textContent = 'Thank you for applying! We appreciate your interest.';
+                            betaFormMsg.classList.remove('hidden');
+                            betaFormMsg.classList.add('bg-green-100', 'text-green-800');
+                        } catch (err) {
+                            betaFormMsg.textContent = 'There was an error submitting your application. Please try again.';
+                            betaFormMsg.classList.remove('hidden');
+                            betaFormMsg.classList.add('bg-red-100', 'text-red-800');
+                        } finally {
+                            submitText.style.display = 'inline';
+                            loadingText.style.display = 'none';
+                        }
+                    });
+                }
+            });
         });
     </script>
 </body>
