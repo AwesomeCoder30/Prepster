@@ -486,58 +486,79 @@
                 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRsZGN3bWd5ZmZrenNsYm1kZHZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzOTAzODgsImV4cCI6MjA2Mzk2NjM4OH0.dXv57u4pSbWoNioKV45aNpfGMBGS0txZPcWMi3DOLTU'
             );
 
-            document.addEventListener('DOMContentLoaded', () => {
-                const form = document.getElementById('betaForm');
-                const submitText = document.getElementById('submitText');
-                const loadingText = document.getElementById('loadingText');
-                const betaFormMsg = document.getElementById('betaFormMsg');
+            // Form submission handler
+            const form = document.getElementById('betaForm');
+            const submitText = document.getElementById('submitText');
+            const loadingText = document.getElementById('loadingText');
+            const betaFormMsg = document.getElementById('betaFormMsg');
 
-                if (form) {
-                    form.addEventListener('submit', async(e) => {
-                        e.preventDefault();
-                        submitText.style.display = 'none';
-                        loadingText.style.display = 'inline';
-                        betaFormMsg.classList.add('hidden');
-                        betaFormMsg.textContent = '';
+            if (form) {
+                form.addEventListener('submit', async(e) => {
+                    e.preventDefault();
 
-                        // Collect form data
-                        const data = {
-                            name: form.elements['name'].value,
-                            email: form.elements['email'].value,
-                            education_level: form.elements['education_level'].value,
-                            field_of_study: form.elements['field_of_study'].value,
-                            study_challenges: form.elements['study_challenges'].value,
-                            current_tools: form.elements['current_tools'].value,
-                            help: form.elements['help'].value,
-                            good_fit: form.elements['good_fit'].value,
-                            referral: form.elements['referral'].value,
-                            testing_commitment: form.elements['testing_commitment'].value
-                        };
+                    // Show loading state
+                    submitText.style.display = 'none';
+                    loadingText.style.display = 'inline';
+                    betaFormMsg.classList.add('hidden');
+                    betaFormMsg.textContent = '';
 
-                        try {
-                            const {
-                                error
-                            } = await supabase
-                                .from('beta-testing')
-                                .insert([data]);
-                            if (error) {
-                                throw error;
-                            }
-                            form.reset();
-                            betaFormMsg.textContent = 'Thank you for applying! We appreciate your interest.';
-                            betaFormMsg.classList.remove('hidden');
-                            betaFormMsg.classList.add('bg-green-100', 'text-green-800');
-                        } catch (err) {
-                            betaFormMsg.textContent = 'There was an error submitting your application. Please try again.';
-                            betaFormMsg.classList.remove('hidden');
-                            betaFormMsg.classList.add('bg-red-100', 'text-red-800');
-                        } finally {
-                            submitText.style.display = 'inline';
-                            loadingText.style.display = 'none';
+                    // Collect form data using FormData for better reliability
+                    const formData = new FormData(form);
+                    const data = {
+                        name: formData.get('name'),
+                        email: formData.get('email'),
+                        education_level: formData.get('education_level'),
+                        field_of_study: formData.get('field_of_study'),
+                        study_challenges: formData.get('study_challenges'),
+                        current_tools: formData.get('current_tools'),
+                        help: formData.get('help'),
+                        good_fit: formData.get('good_fit'),
+                        referral: formData.get('referral'),
+                        testing_commitment: formData.get('testing_commitment'),
+                        created_at: new Date().toISOString()
+                    };
+
+                    console.log('Form data being submitted:', data); // Debug log
+
+                    try {
+                        // Test Supabase connection first
+                        console.log('Testing Supabase connection...');
+                        console.log('Data to submit:', data);
+
+                        const {
+                            data: result,
+                            error
+                        } = await supabase
+                            .from('beta_testing') // Changed from 'beta-testing' to 'beta_testing'
+                            .insert([data]);
+
+                        if (error) {
+                            console.error('Supabase error details:', error);
+                            throw new Error(`Database error: ${error.message}`);
                         }
-                    });
-                }
-            });
+
+                        console.log('Successfully submitted:', result);
+                        form.reset();
+                        betaFormMsg.textContent = 'Thank you for applying! We\'ll review your application and get back to you soon.';
+                        betaFormMsg.classList.remove('hidden', 'bg-red-100', 'text-red-800');
+                        betaFormMsg.classList.add('bg-green-100', 'text-green-800');
+
+                        // Scroll to success message
+                        betaFormMsg.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+
+                    } catch (err) {
+                        console.error('Form submission error:', err);
+                        betaFormMsg.textContent = `Error: ${err.message || 'There was an error submitting your application. Please try again.'}`;
+                        betaFormMsg.classList.remove('hidden', 'bg-green-100', 'text-green-800');
+                        betaFormMsg.classList.add('bg-red-100', 'text-red-800');
+                    } finally {
+                        submitText.style.display = 'inline';
+                        loadingText.style.display = 'none';
+                    }
+                });
+            }
         });
     </script>
 </body>
