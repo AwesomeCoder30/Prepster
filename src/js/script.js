@@ -626,10 +626,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const full_name = form.elements['full_name'].value;
             const email = form.elements['email'].value;
             const year = form.elements['year'].value;
+            const hear_about_us = form.elements['hear_about_us'].value;
 
             // Normalize email for case-insensitive check and insert
             const emailInput = email.trim().toLowerCase();
-            console.log('Form data:', { full_name, email: emailInput, year });
+            console.log('Form data:', { full_name, email: emailInput, year, hear_about_us });
 
             try {
                 // Debug: Print all emails in the database
@@ -681,7 +682,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Email doesn't exist, proceed with insertion (normalized email)
                 const { error: insertError } = await supabase
                     .from('waitlist')
-                    .insert([{ full_name, email: emailInput, year }]);
+                    .insert([{ full_name, email: emailInput, year, hear_about_us }]);
 
                 if (insertError) {
                     console.error('Error inserting new record:', insertError);

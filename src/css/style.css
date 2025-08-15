@@ -1343,3 +1343,62 @@ html.dark body {
         transform: translateY(-20px) scale(1);
     }
 }
+
+
+/* Custom Dropdown Styling */
+
+select[name="hear_about_us"] {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+select[name="hear_about_us"]:hover {
+    border-color: #10b981;
+}
+
+select[name="hear_about_us"]:focus {
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+
+/* Ensure dropdown works properly on mobile devices */
+
+@media (max-width: 640px) {
+    select[name="hear_about_us"] {
+        font-size: 16px;
+        padding: 12px 16px;
+        padding-right: 48px;
+    }
+}
+
+
+/* Dark mode support - keeping white background to match form */
+
+@media (prefers-color-scheme: dark) {
+    select[name="hear_about_us"] {
+        background-color: #ffffff;
+        color: #111827;
+        border-color: #d1d5db;
+    }
+    select[name="hear_about_us"]:hover {
+        border-color: #10b981;
+    }
+    select[name="hear_about_us"]:focus {
+        border-color: #10b981;
+        box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+    }
+}
+
+
+/* Ensure proper appearance on all browsers */
+
+select[name="hear_about_us"]::-ms-expand {
+    display: none;
+}
+
+select[name="hear_about_us"] option {
+    background-color: inherit;
+    color: inherit;
+    padding: 8px 12px;
+}
