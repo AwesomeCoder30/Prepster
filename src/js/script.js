@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // Enhanced fade-in observer for features section
     const fadeInElements = document.querySelectorAll(".fade-in");
+    const featureCards = document.querySelectorAll(".feature-card");
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -8,7 +11,42 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }, { threshold: 0.1 });
+
     fadeInElements.forEach(el => observer.observe(el));
+
+    // Features section animation observer
+    const featuresObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const cards = entry.target.querySelectorAll('.feature-card');
+                cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.style.animationDelay = `${index * 0.2}s`;
+                        card.style.animationPlayState = 'running';
+                    }, index * 100);
+                });
+                featuresObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    const featuresSection = document.getElementById('features');
+    if (featuresSection) {
+        featuresObserver.observe(featuresSection);
+    }
+
+    // Add hover sound effects (optional - for enhanced UX)
+    featureCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            // Add subtle scale effect
+            card.style.transform = 'scale(1.02)';
+        });
+
+        card.addEventListener('mouseleave', () => {
+            // Reset scale
+            card.style.transform = 'scale(1)';
+        });
+    });
 
     const loginToggle = document.getElementById("login-toggle");
     const loginForm = document.getElementById("login-form");

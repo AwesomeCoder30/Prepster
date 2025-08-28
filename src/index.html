@@ -160,11 +160,11 @@
         <div class="container mx-auto px-4 sm:px-6">
             <div class="flex flex-col lg:flex-row items-center lg:items-center gap-8 lg:gap-12">
 
-                <div class="w-full lg:w-1/2 space-y-6 text-center lg:text-left">
-                    <h3 class="section-title-enhanced text-left text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
-                        Our AI Integration
+                <div class="w-full lg:w-1/2 space-y-6 text-center">
+                    <h3 class="section-title-enhanced text-center text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
+                        Our AI <span class="text-green-600">Integration</span>
                     </h3>
-                    <div class="space-y-6 max-w-2xl mx-auto lg:mx-0 relative">
+                    <div class="space-y-6 max-w-2xl mx-auto relative">
                         <!-- Animated Progress Line -->
                         <div class="progress-line">
                             <div class="progress-fill"></div>
@@ -435,23 +435,125 @@
         </div>
     </section>
 
-    <section id="features" class="py-12 sm:py-16 bg-gray-200 dark:bg-gray-800 flex items-center justify-center snap-start min-h-[auto]">
-        <div class="container mx-auto px-4 sm:px-6">
-            <h2 class="section-title-enhanced text-center text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-8 md:mb-10">Key Features</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 text-center">
-                <div class="bg-gray-200 dark:bg-gray-800 p-4 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Pre-Med Cheat Sheet</h3>
-                    <p class="text-base text-gray-600 dark:text-gray-400">Access instant admissions data for your target schools, including GPA/MCAT requirements, clinical hours needed, and prerequisites. Get customized application strategies and tips from successful applicants.</p>
+    <section id="features" class="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-gray-50 via-white to-green-50 relative overflow-hidden">
+        <!-- Background decorative elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-green-100 to-transparent rounded-full opacity-30 blur-3xl"></div>
+            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-blue-100 to-transparent rounded-full opacity-30 blur-3xl"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-green-50 to-blue-50 rounded-full opacity-20 blur-3xl"></div>
+        </div>
+
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-16 lg:mb-20">
+                <h2 class="section-title-enhanced text-center text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                    Key <span class="gradient-text">Features</span>
+                </h2>
+                <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                    Everything you need to succeed in your pre-med journey, powered by AI and personalized just for you.
+                </p>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
+                <!-- Feature Card 1: Pre-Med Cheat Sheet -->
+                <div class="feature-card group">
+                    <div class="feature-card-inner">
+                        <!-- Icon Container -->
+                        <div class="feature-icon-container">
+                            <div class="feature-icon">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="feature-content">
+                            <h3 class="feature-title">Pre-Med Cheat Sheet</h3>
+                            <p class="feature-description">
+                                Access instant admissions data for your target schools, including GPA/MCAT requirements, clinical hours needed, and prerequisites. Get customized application strategies and tips from successful applicants.
+                            </p>
+                        </div>
+
+                        <!-- Hover Effect Elements -->
+                        <div class="feature-hover-elements">
+                            <div class="feature-glow"></div>
+                            <div class="feature-particles">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-gray-200 dark:bg-gray-800 p-4 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Personalized Roadmap</h3>
-                    <p class="text-base text-gray-600 dark:text-gray-400">Stay on track with automated progress monitoring of classes, clinical hours, and key milestones. Your roadmap updates automatically based on your target schools' requirements.</p>
+
+                <!-- Feature Card 2: Personalized Roadmap -->
+                <div class="feature-card group">
+                    <div class="feature-card-inner">
+                        <!-- Icon Container -->
+                        <div class="feature-icon-container">
+                            <div class="feature-icon">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="feature-content">
+                            <h3 class="feature-title">Personalized Roadmap</h3>
+                            <p class="feature-description">
+                                Stay on track with automated progress monitoring of classes, clinical hours, and key milestones. Your roadmap updates automatically based on your target schools' requirements.
+                            </p>
+                        </div>
+
+                        <!-- Hover Effect Elements -->
+                        <div class="feature-hover-elements">
+                            <div class="feature-glow"></div>
+                            <div class="feature-particles">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-gray-200 dark:bg-gray-800 p-4 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Smart MCAT Planner</h3>
-                    <p class="text-base text-gray-600 dark:text-gray-400">Get a personalized MCAT study plan with weekly goals, curated resources, and recommended Anki decks. AI-powered tracking adapts to your progress and keeps you accountable.</p>
+
+                <!-- Feature Card 3: Smart MCAT Planner -->
+                <div class="feature-card group">
+                    <div class="feature-card-inner">
+                        <!-- Icon Container -->
+                        <div class="feature-icon-container">
+                            <div class="feature-icon">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="feature-content">
+                            <h3 class="feature-title">Smart MCAT Planner</h3>
+                            <p class="feature-description">
+                                Get a personalized MCAT study plan with weekly goals, curated resources, and recommended Anki decks. AI-powered tracking adapts to your progress and keeps you accountable.
+                            </p>
+                        </div>
+
+                        <!-- Hover Effect Elements -->
+                        <div class="feature-hover-elements">
+                            <div class="feature-glow"></div>
+                            <div class="feature-particles">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+
         </div>
     </section>
 

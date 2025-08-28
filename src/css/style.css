@@ -515,36 +515,421 @@ body {
 }
 
 
-/* Features Section Card Hover Effect */
+/* Enhanced Features Section Styling */
 
-#features .container>div {
-    padding: 1.5rem;
-    /* p-6 */
-    border-radius: 0.75rem;
-    /* rounded-xl */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: #ffffff;
-    /* bg-white for the cards themselves */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    /* shadow-md */
+
+/* Background decorative elements */
+
+#features {
+    position: relative;
+    overflow: hidden;
 }
 
-#features .container>div:hover {
-    transform: translateY(-5px) scale(1.03);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    /* shadow-lg */
-    background-color: #f9fafb;
-    /* Slightly different background on hover, like gray-50 */
+#features::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.03) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.03) 0%, transparent 50%), radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.02) 0%, transparent 50%);
+    pointer-events: none;
 }
 
-#features .container>div h3 {
+.feature-card {
+    position: relative;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.feature-card-inner {
+    position: relative;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid rgba(229, 231, 235, 0.6);
+    border-radius: 24px;
+    padding: 2.5rem 2rem;
+    height: 100%;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(255, 255, 255, 0.9);
+}
+
+.feature-card:hover .feature-card-inner {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(16, 185, 129, 0.4);
+    background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+    box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.15), 0 10px 10px -5px rgba(16, 185, 129, 0.1), 0 0 0 1px rgba(16, 185, 129, 0.2), 0 0 20px rgba(16, 185, 129, 0.08);
+}
+
+
+/* Icon Container */
+
+.feature-icon-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.feature-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    border-radius: 20px;
+    color: white;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.feature-card:hover .feature-icon::before {
+    left: 100%;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+}
+
+
+/* Content Styling */
+
+.feature-content {
+    text-align: center;
+}
+
+.feature-title {
+    font-size: 1.5rem;
+    font-weight: 700;
     color: #1f2937;
-    /* Tailwind gray-800 */
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #374151, #4b5563);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: all 0.3s ease;
 }
 
-#features .container>div p {
+.feature-card:hover .feature-title {
+    background: linear-gradient(135deg, #10b981, #059669);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.feature-description {
     color: #4b5563;
-    /* Tailwind gray-600 */
+    line-height: 1.7;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.feature-card:hover .feature-description {
+    color: #374151;
+}
+
+
+/* Hover Effect Elements */
+
+.feature-hover-elements {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: 24px;
+}
+
+.feature-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.6s ease;
+    opacity: 0;
+}
+
+.feature-card:hover .feature-glow {
+    width: 300px;
+    height: 300px;
+    opacity: 1;
+}
+
+.feature-particles {
+    position: absolute;
+    inset: 0;
+}
+
+.feature-particles span {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #10b981;
+    border-radius: 50%;
+    opacity: 0;
+    animation: particleFloat 3s infinite ease-in-out;
+}
+
+.feature-particles span:nth-child(1) {
+    top: 20%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.feature-particles span:nth-child(2) {
+    top: 60%;
+    right: 20%;
+    animation-delay: 1s;
+}
+
+.feature-particles span:nth-child(3) {
+    bottom: 20%;
+    left: 50%;
+    animation-delay: 2s;
+}
+
+@keyframes particleFloat {
+    0%,
+    100% {
+        opacity: 0;
+        transform: translateY(0) scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-20px) scale(1);
+    }
+}
+
+
+/* Enhanced Animations */
+
+.feature-card {
+    animation: fadeInUp 0.8s ease-out forwards paused;
+    opacity: 0;
+    transform: translateY(30px);
+    will-change: transform, opacity;
+}
+
+.feature-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.feature-card:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.feature-card:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Smooth transitions for all interactive elements */
+
+.feature-card * {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* Staggered animation for feature icons */
+
+.feature-icon {
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+.feature-card:nth-child(1) .feature-icon {
+    animation-delay: 0s;
+}
+
+.feature-card:nth-child(2) .feature-icon {
+    animation-delay: 1s;
+}
+
+.feature-card:nth-child(3) .feature-icon {
+    animation-delay: 2s;
+}
+
+@keyframes iconFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 1024px) {
+    .feature-card-inner {
+        padding: 2rem 1.5rem;
+    }
+    .feature-icon {
+        width: 70px;
+        height: 70px;
+    }
+    .feature-title {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .feature-card-inner {
+        padding: 1.5rem 1rem;
+    }
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+    }
+    .feature-title {
+        font-size: 1.125rem;
+    }
+    .feature-description {
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .feature-card-inner {
+        padding: 1.25rem 0.75rem;
+    }
+    .feature-icon {
+        width: 50px;
+        height: 50px;
+    }
+    .feature-icon svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    /* Adjust grid for very small screens */
+    #features .grid {
+        gap: 1.5rem;
+    }
+    /* Reduce padding for mobile */
+    #features {
+        padding: 3rem 0;
+    }
+    #features .text-center.mb-16 {
+        margin-bottom: 2rem;
+    }
+}
+
+
+/* Extra small devices */
+
+@media (max-width: 480px) {
+    .feature-card-inner {
+        padding: 1rem 0.5rem;
+    }
+    .feature-icon {
+        width: 45px;
+        height: 45px;
+    }
+    .feature-title {
+        font-size: 1rem;
+    }
+    .feature-description {
+        font-size: 0.8rem;
+    }
+}
+
+
+/* Landscape mobile optimization */
+
+@media (max-height: 500px) and (orientation: landscape) {
+    #features {
+        padding: 2rem 0;
+    }
+    .feature-card-inner {
+        padding: 1.5rem 1rem;
+    }
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+
+/* Light mode only - keeping cards bright and clean */
+
+
+/* Additional hover effects for feature cards */
+
+.feature-card:hover .feature-card-inner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(59, 130, 246, 0.05));
+    border-radius: 24px;
+    opacity: 0;
+    animation: cardGlow 0.6s ease-out forwards;
+}
+
+@keyframes cardGlow {
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Ensure smooth integration with existing site */
+
+#features .section-title-enhanced::after,
+#ai-mvp .section-title-enhanced::after {
+    background: linear-gradient(to right, #10b981, #059669);
+    width: 100px;
+    height: 4px;
+}
+
+
+/* Focus states for accessibility */
+
+.feature-card:focus-within .feature-card-inner {
+    outline: 2px solid #10b981;
+    outline-offset: 2px;
+}
+
+
+/* Print styles */
+
+@media print {
+    .feature-card-inner {
+        box-shadow: none;
+        border: 1px solid #d1d5db;
+    }
+    .feature-hover-elements,
+    .feature-glow,
+    .feature-particles {
+        display: none;
+    }
 }
 
 .gradient-text {
