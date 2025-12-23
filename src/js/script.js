@@ -629,13 +629,19 @@ function hideNoResults() {
 document.addEventListener('DOMContentLoaded', initializeFAQ);
 
 // Supabase waitlist form submission
-const supabase = window.supabase.createClient(
-    'https://dldcwmgyffkzslbmddva.supabase.co',
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRsZGN3bWd5ZmZrenNsYm1kZHZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzOTAzODgsImV4cCI6MjA2Mzk2NjM4OH0.dXv57u4pSbWoNioKV45aNpfGMBGS0txZPcWMi3DOLTU'
-);
-
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM Content Loaded - Initializing form handlers');
+
+    // Initialize Supabase client
+    if (typeof supabase === 'undefined') {
+        console.error('Supabase library not loaded. Please check the CDN script.');
+        return;
+    }
+
+    const supabaseClient = supabase.createClient(
+        'https://dldcwmgyffkzslbmddva.supabase.co',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRsZGN3bWd5ZmZrenNsYm1kZHZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzOTAzODgsImV4cCI6MjA2Mzk2NjM4OH0.dXv57u4pSbWoNioKV45aNpfGMBGS0txZPcWMi3DOLTU'
+    );
 
     const form = document.getElementById('waitlistForm');
     const waitlistContainer = document.getElementById('waitlist-form-container');
@@ -672,7 +678,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 // Debug: Print all emails in the database
-                const { data: allEmails, error: allError } = await supabase
+                const { data: allEmails, error: allError } = await supabaseClient
                     .from('waitlist')
                     .select('email');
                 if (allError) {
@@ -682,7 +688,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 // Debug: Wildcard search for email
-                const { data: wildcardUsers, error: wildcardError } = await supabase
+                const { data: wildcardUsers, error: wildcardError } = await supabaseClient
                     .from('waitlist')
                     .select('email')
                     .ilike('email', `%${emailInput}%`);
@@ -694,7 +700,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // First check if email already exists (case-insensitive, exact match)
                 console.log('Checking if email exists (case-insensitive):', emailInput);
-                const { data: existingUsers, error: checkError } = await supabase
+                const { data: existingUsers, error: checkError } = await supabaseClient
                     .from('waitlist')
                     .select('email')
                     .ilike('email', emailInput);
@@ -718,7 +724,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 console.log('Email is new, proceeding with insertion');
                 // Email doesn't exist, proceed with insertion (normalized email)
-                const { error: insertError } = await supabase
+                const { error: insertError } = await supabaseClient
                     .from('waitlist')
                     .insert([{ full_name, email: emailInput, year, hear_about_us }]);
 
